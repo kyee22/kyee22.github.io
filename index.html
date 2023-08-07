@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-串的模式匹配" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/06/%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" class="article-date">
+  <time class="dt-published" datetime="2023-08-06T11:52:44.000Z" itemprop="datePublished">2023-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/06/%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">串的模式匹配</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="串的模式匹配-Pattern-Matching"><a href="#串的模式匹配-Pattern-Matching" class="headerlink" title="串的模式匹配(Pattern Matching)"></a>串的模式匹配(Pattern Matching)</h1><p>字符串的定位。给定一个<strong>主字符串</strong>$S$和一个子串$T$(又称<strong>模式串</strong>)，长度分别为$n$和$m$。在主串$S$中，从起始位置开始查找，若在主串$S$中找到一个与子串$T$相等的子串，则返回$T$的第一个字符在主串中的位置序号。</p>
+<blockquote>
+<p>例如:   S&#x3D; ´Beijing&amp;Nanjing&amp;Shanghai´        </p>
+<p>​			T&#x3D; ´jing´</p>
+<p>返回：4</p>
+</blockquote>
+<h2 id="经典的朴素字符串查找算法（Brute-Force）"><a href="#经典的朴素字符串查找算法（Brute-Force）" class="headerlink" title="经典的朴素字符串查找算法（Brute-Force）"></a>经典的朴素字符串查找算法（Brute-Force）</h2><p>时间复杂度：$O(nm)$</p>
+<p>下面是2种形式的写法(写法1和写法2完全等价)</p>
+<p>写法1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">index</span><span class="params">(<span class="type">char</span> s[ ], <span class="type">char</span> t[ ])</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">for</span>(i =<span class="number">0</span>; s[i] != ‘\<span class="number">0</span>’; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=i,k=<span class="number">0</span>;t[k]!=‘\<span class="number">0</span>’&amp;&amp;s[j]==t[k]; j++,k++)</span><br><span class="line">        ;</span><br><span class="line">        <span class="keyword">if</span>(t[k] == ‘\<span class="number">0</span>’)</span><br><span class="line">        <span class="keyword">return</span> (i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写法2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">index</span><span class="params">(<span class="type">char</span> S[ ], <span class="type">char</span> T[ ])</span> </span><br><span class="line">&#123;</span><br><span class="line">     <span class="type">int</span> i = <span class="number">0</span>,  j=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">while</span> ( S[i]!=<span class="string">&#x27;\0&#x27;</span>  &amp;&amp;  T[j]!=<span class="string">&#x27;\0&#x27;</span>) &#123;</span><br><span class="line">         <span class="keyword">if</span> (S [i] == T[j] ) &#123;</span><br><span class="line">             i++;   </span><br><span class="line">             j++ </span><br><span class="line">         &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            i = i-j +<span class="number">1</span>;	</span><br><span class="line">            j = <span class="number">0</span>; 		</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">if</span> ( T[j] == <span class="string">&#x27;\0&#x27;</span>) 	</span><br><span class="line">         <span class="keyword">return</span>  i-j;  </span><br><span class="line">    <span class="keyword">else</span>    </span><br><span class="line">         <span class="keyword">return</span> <span class="number">-1</span>;                   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>算法改进：</strong>当$S$中剩余字符数小于$T$中字符数$(n-i&lt;m)$时，停止查找</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">index</span><span class="params">(<span class="type">char</span> s[ ], <span class="type">char</span> t[ ])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i, j, k,n,m;</span><br><span class="line">    n = <span class="built_in">strlen</span>(s); </span><br><span class="line">    m = <span class="built_in">strlen</span>(t);</span><br><span class="line">    <span class="keyword">for</span>(i =<span class="number">0</span>; n-i &gt;= m; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(j=i,k=<span class="number">0</span>;t[k]!=‘\<span class="number">0</span>’&amp;&amp;s[j]==t[k]; j++,k++)</span><br><span class="line">            ;</span><br><span class="line">		<span class="keyword">if</span>(t[k] == ‘\<span class="number">0</span>’)</span><br><span class="line">		<span class="keyword">return</span> ( i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> (<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>朴素字符串匹配算法存在的问题：</strong></p>
+<p>当前匹配在找到不匹配的字符后，要将主串中下一次匹配开始位置移动一个位置（即要回溯），而不管当前匹配情况，如下图。</p>
+<p><img src="C:\Users\Arren\AppData\Roaming\Typora\typora-user-images\image-20230331223513568.png" alt="image-20230331223513568"></p>
+<h2 id="KMP-Knuth-Morris-Pratt-算法"><a href="#KMP-Knuth-Morris-Pratt-算法" class="headerlink" title="KMP(Knuth-Morris-Pratt)算法"></a>KMP(Knuth-Morris-Pratt)算法</h2><p>时间复杂度：$O(n+m)$</p>
+<h3 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h3><p>源串称为主串，定义为$S$，当前匹配位置为$i$；目标串称为子串，定义为$T$，当前匹配位置为$j$。当前匹配在找到不匹配的字符后，重新开始匹配时：</p>
+<ol>
+<li>主串当前位置$i$不回溯，即不重置为上次匹配开始位置的一下位置；</li>
+<li>子串当前位置$j$视情况回溯至起始串位置（0），或子串中某一位置。(如下图)</li>
+</ol>
+<p><img src="C:\Users\Arren\AppData\Roaming\Typora\typora-user-images\image-20230331223225078.png" alt="image-20230331223225078"></p>
+<h3 id="next函数"><a href="#next函数" class="headerlink" title="next函数"></a>next函数</h3><p>KMP算法核心思想便是计算子串回溯位置。首先明确字符串的前缀和后缀的定义：</p>
+<ul>
+<li><strong>前缀：</strong>不包括最后一个字符的子串</li>
+<li><strong>后缀：</strong>不包含第一个字符的子串</li>
+</ul>
+<p>根据子串$T$当前匹配的规律：  $ T_0…T_{k-1}&#x3D;T_{j-k} …T_{j-1}$由当前失配位置$j$(已知) ，可以归纳计算下次匹配起点$k$的表达式。</p>
+<p>令$k &#x3D; next[ j ]$（函数$next$用子串当前位置$j$来计算下次开始匹配位置$k$，$k$ 与$j$ 显然具有函数关系），则<br>$$<br>next[j]&#x3D;\begin{cases}-1&amp;,j&#x3D;0\max{k\mid0&lt;k&lt;j且T_0…T_{k-1}&#x3D;T_{j-k} …T_{j-1}}\0&amp;,其他情况\end{cases}<br>$$<br>注意：</p>
+<ol>
+<li><p>$k$值仅取决于子串本身而与相匹配的主串无关。</p>
+</li>
+<li><p>$k$值为子串从头向后及从j向前的两部分子串最大相同子串的长度。</p>
+</li>
+<li><p>这里的两部分子串<strong>可以有部分重叠</strong>的字符，但<strong>不可以全部重叠</strong>，即$k$最大为$j-1$。例如：</p>
+<p><img src="C:\Users\Arren\AppData\Roaming\Typora\typora-user-images\image-20230331154302513.png" alt="image-20230331154302513"></p>
+</li>
+</ol>
+<p><strong>算法分析：</strong></p>
+<ol>
+<li><p>首先必然有$next[0]&#x3D;-1$，$next[1]&#x3D;0$;</p>
+</li>
+<li><p>若存在$next[j]&#x3D;k$，即存在$ T_0…T_{k-1}&#x3D;T_{j-k} …T_{j-1}$：</p>
+<ul>
+<li><p>若此时$T_k&#x3D;T_j$，则存在$ T_0…T_{k-1}T_k&#x3D;T_{j-k} …T_{j-1}T_j$，因此<br>$$<br>next[j+1]&#x3D;next[j]+1&#x3D;k+1\tag{1}<br>$$</p>
+</li>
+<li><p>若$T_k\neq T_j$，则继续$k:&#x3D;next[k]$直到$k&#x3D;-1$：</p>
+<p>$repeat\ until\ k&#x3D;-1{$<br>$$<br>k:&#x3D;next[k]\T_{k}&#x3D;T_j\ ?\begin{cases}Yes:next[j+1]&#x3D;k+1,break\No:continue\end{cases}<br>\tag{2}<br>$$<br>$}$</p>
+</li>
+</ul>
+<blockquote>
+<p>e.g.  s&#x3D;<code>&quot;ababcabcabab&quot;</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">j</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">5</th>
+<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">8</th>
+<th align="center">9</th>
+<th align="center">10</th>
+<th align="center">11</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">T[j]</td>
+<td align="center">a</td>
+<td align="center">b</td>
+<td align="center">a</td>
+<td align="center">b</td>
+<td align="center">c</td>
+<td align="center">a</td>
+<td align="center">b</td>
+<td align="center">c</td>
+<td align="center">a</td>
+<td align="center">b</td>
+<td align="center">a</td>
+<td align="center">b</td>
+</tr>
+<tr>
+<td align="center">next[j]</td>
+<td align="center">-1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+</tbody></table>
+<p>Step:</p>
+<ol start="0">
+<li>next[0]&#x3D;-1；</li>
+<li>next[1]&#x3D;0；</li>
+<li>next[2]&#x3D;0；$T_0&#x3D;T_2$</li>
+<li>next[3]&#x3D;1；$T_1&#x3D;T_3$</li>
+<li>next[4]&#x3D;2；$T_2\neq T_4$，k&#x3D;next[2]&#x3D;0；$T_0 \neq T_4$，k&#x3D;next[0]&#x3D;-1，达到边界</li>
+<li>next[5]&#x3D;0；$T_0&#x3D;T_5$</li>
+<li>next[6]&#x3D;1；$T_1&#x3D;T_6$</li>
+<li>next[7]&#x3D;2；$T_2 \neq T_7$，k&#x3D;next[2]&#x3D;0；$T_0 \neq T_7$，k&#x3D;next[0]&#x3D;-1，达到边界</li>
+<li>next[8]&#x3D;0；$T_0&#x3D;T_8$</li>
+<li>next[9]&#x3D;1；$T_1&#x3D;T_9$</li>
+<li>next[10]&#x3D;2；$T_2&#x3D;T_{10}$</li>
+<li>next[11]&#x3D;3；($T_3&#x3D;T_{11}$)</li>
+</ol>
+</blockquote>
+</li>
+</ol>
+<p><strong>思考：$T_k&#x3D; T_j$时向后递推的正确性显然。但是为什么当$T_k\neq T_j$时，通过$k:&#x3D;next[k]$<font color=orange>向前回溯</font>(如下)的方法的正确性呢？</strong><br>$$<br>T_k&#x3D;T_j?\T_{next[k]}&#x3D;T_j?\T_{next[next[k]]}&#x3D;T_j?\\dots \<br>$$<br>以下面这个$T$模式串为例：</p>
+<p>当前缀$k&#x3D;5,T_k&#x3D;m$，后缀$j&#x3D;11,T_{j}&#x3D;x$时，$T_k\neq T_j$</p>
+<p>那么$k$回溯为$next[k]&#x3D;2$</p>
+<p><img src="C:\Users\Arren\AppData\Roaming\Typora\typora-user-images\image-20230331224204741.png" alt="image-20230331224204741"></p>
+<p>这样的回溯保证了$I$、$II$、$III$和$IV$四个字串完全相等，尤其是$I$和$IV$两个字串的完全相等保证了$I+T_k$组成新的前缀，$IV+T_j$组成新的后缀，通过判断新的$T_k&#x3D;T_j?$便可以再次递推(向前或回溯)。当回溯到$k&#x3D;-1$时达到边界。</p>
+<p><img src="C:\Users\Arren\AppData\Roaming\Typora\typora-user-images\image-20230331224222506.png" alt="image-20230331224222506"></p>
+<p><strong>getnext函数：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">getnext</span><span class="params">(<span class="type">char</span> T[], <span class="type">int</span> next[])</span></span><br><span class="line">&#123;  	</span><br><span class="line">    <span class="type">int</span> i=<span class="number">0</span>, j=<span class="number">-1</span>;</span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(T[i]!=‘\<span class="number">0</span>’)&#123;</span><br><span class="line">		<span class="keyword">if</span>(j==<span class="number">-1</span> || T[i]==T[j])&#123; <span class="comment">//i为后缀位置；j为前缀位置</span></span><br><span class="line">            i++; </span><br><span class="line">            j++; </span><br><span class="line">            next[i]=j; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            j = next[j]; <span class="comment">//若字符不同，则j值回溯</span></span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>KMPindex函数：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">KMPindex</span><span class="params">(<span class="type">char</span> S[ ], <span class="type">char</span> T[ ])</span> </span><br><span class="line">&#123;</span><br><span class="line">     <span class="type">int</span> i = <span class="number">0</span>,  j=<span class="number">0</span>, *next;</span><br><span class="line"></span><br><span class="line">     next = (<span class="type">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="type">int</span>)*(<span class="built_in">strlen</span>(T)+<span class="number">1</span>));</span><br><span class="line">     getnext(T, next);</span><br><span class="line">     <span class="keyword">while</span> ( S[i]!=‘\<span class="number">0</span>’  &amp;&amp;  T[j]!=‘\<span class="number">0</span>’) &#123;</span><br><span class="line">         <span class="keyword">if</span> (S [i] == T[j] ) &#123;</span><br><span class="line">             i++;   </span><br><span class="line">             j++ ;</span><br><span class="line">         &#125; </span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">             (j == <span class="number">0</span>) ? i++ :( j = next[j]); <span class="comment">//j回退到相应位置开始匹配，i值不变</span></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="built_in">free</span>(next);</span><br><span class="line">     <span class="keyword">if</span> ( T[j] == ‘\<span class="number">0</span>’) 	<span class="comment">//匹配成功，返回匹配位置</span></span><br><span class="line">         <span class="keyword">return</span>  i-j;  </span><br><span class="line">    <span class="keyword">else</span>    </span><br><span class="line">         <span class="keyword">return</span> <span class="number">-1</span>;                   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于下标$i$无须回溯，比较次数仅为$n$，即使加上计算$next[j]$时所用的比较次数$m$，比较总次数也仅为$n+m&#x3D;O(n+m)$，大大快于朴素的Brute-Force算法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/06/%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/" data-id="cll101npl0001nknmdlrr1uke" data-title="串的模式匹配" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/data-structure/" rel="tag">data structure</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/06/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2023-08-06T11:40:57.745Z" itemprop="datePublished">2023-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/08/06/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/06/hello-world/" data-id="cll101npb0000nknmfh2u17ph" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/data-structure/" rel="tag">data structure</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/data-structure/" style="font-size: 10px;">data structure</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/06/%E4%B8%B2%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D/">串的模式匹配</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/06/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
