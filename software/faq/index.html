@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1036,54 +1047,31 @@
 <p class="admonition-title">我想在 SHELL 里面随时看到我所在的 netns，有什么好办法吗</p>
 <p>你可以用 <code>ip netns identify</code> 命令获取当前的 netns，将它加入 SHELL 的 <code>PS1</code> 或类似配置中即可。</p>
 <p>下面是一个 <code>fish</code> 配置的例子，放到 <code>~/.config/fish/config.fish</code> 中：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>fish_prompt<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Write out the prompt&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="nb">set</span><span class="w"> </span>-l<span class="w"> </span>color_cwd
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nb">set</span><span class="w"> </span>-l<span class="w"> </span>suffix
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span>switch<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span>root<span class="w"> </span>toor
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-q<span class="w"> </span>fish_color_cwd_root
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">                </span><span class="nb">set</span><span class="w"> </span>color_cwd<span class="w"> </span><span class="nv">$fish_color_cwd_root</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">            </span><span class="k">else</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">                </span><span class="nb">set</span><span class="w"> </span>color_cwd<span class="w"> </span><span class="nv">$fish_color_cwd</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">            </span>end
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>suffix<span class="w"> </span><span class="s1">&#39;#&#39;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;*&#39;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>color_cwd<span class="w"> </span><span class="nv">$fish_color_cwd</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>suffix<span class="w"> </span><span class="s1">&#39;&gt;&#39;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span>end
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span>switch<span class="w"> </span><span class="o">(</span>ip<span class="w"> </span>netns<span class="w"> </span>identify<span class="o">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>prefix<span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;*&#39;</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>prefix<span class="w"> </span><span class="s2">&quot;(&quot;</span><span class="o">(</span>ip<span class="w"> </span>netns<span class="w"> </span>identify<span class="o">)</span><span class="s2">&quot;) &quot;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="w">    </span>end
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$prefix</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w"> </span>@<span class="w"> </span><span class="o">(</span>prompt_hostname<span class="o">)</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">(</span>set_color<span class="w"> </span><span class="nv">$color_cwd</span><span class="o">)</span><span class="w"> </span><span class="o">(</span>prompt_pwd<span class="o">)</span><span class="w"> </span><span class="o">(</span>set_color<span class="w"> </span>normal<span class="o">)</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$suffix</span><span class="s2"> &quot;</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a>end
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>fish_prompt<span class="w"> </span>--description<span class="w"> </span><span class="s2">&quot;Write out the prompt&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="nb">set</span><span class="w"> </span>-l<span class="w"> </span>color_cwd
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nb">set</span><span class="w"> </span>-l<span class="w"> </span>suffix
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>switch<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span>root<span class="w"> </span>toor
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span>-q<span class="w"> </span>fish_color_cwd_root
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">                </span><span class="nb">set</span><span class="w"> </span>color_cwd<span class="w"> </span><span class="nv">$fish_color_cwd_root</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">            </span><span class="k">else</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">                </span><span class="nb">set</span><span class="w"> </span>color_cwd<span class="w"> </span><span class="nv">$fish_color_cwd</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">            </span>end
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>suffix<span class="w"> </span><span class="s1">&#39;#&#39;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;*&#39;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>color_cwd<span class="w"> </span><span class="nv">$fish_color_cwd</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>suffix<span class="w"> </span><span class="s1">&#39;&gt;&#39;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>end
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span>switch<span class="w"> </span><span class="o">(</span>ip<span class="w"> </span>netns<span class="w"> </span>identify<span class="o">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>prefix<span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;*&#39;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="nb">set</span><span class="w"> </span>prefix<span class="w"> </span><span class="s2">&quot;(&quot;</span><span class="o">(</span>ip<span class="w"> </span>netns<span class="w"> </span>identify<span class="o">)</span><span class="s2">&quot;) &quot;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span>end
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$prefix</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="w"> </span>@<span class="w"> </span><span class="o">(</span>prompt_hostname<span class="o">)</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span><span class="o">(</span>set_color<span class="w"> </span><span class="nv">$color_cwd</span><span class="o">)</span><span class="w"> </span><span class="o">(</span>prompt_pwd<span class="o">)</span><span class="w"> </span><span class="o">(</span>set_color<span class="w"> </span>normal<span class="o">)</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$suffix</span><span class="s2"> &quot;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>end
+</code></pre></div>
 </div>
 <div class="admonition question">
 <p class="admonition-title">用 CMake 编译的时候，出现 CMake Error：if given arguments STREQUAL EMCC</p>

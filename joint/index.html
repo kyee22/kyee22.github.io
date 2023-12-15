@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1012,15 +1023,13 @@
 <h2 id="_3">实验框架<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <p>ThinRouter 的样例工程在 <a href="https://git.tsinghua.edu.cn/tanlabs-public/tanlabs">https://git.tsinghua.edu.cn/tanlabs-public/tanlabs</a> （<a href="https://github.com/thu-cs-lab/tanlabs">GitHub 镜像</a>），克隆后就可以得到一个样例工程，这是实验者可以使用的实验框架，部分实验逻辑和引脚约束已经提供好。实验者可以阅读实验框架中的注释来获得更多信息。此外，实验者也可以不使用提供的实验框架，从零开始设计与实现。</p>
 <p>如果实验框架原始代码有更新（届时助教会通过多种渠道通知），实验者可以按照如下命令合并这些更新：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>&gt;<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>git@git.tsinghua.edu.cn:tanlabs-public/tanlabs.git
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>&gt;<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>upstream
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>&gt;<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>upstream/masterk
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&gt;<span class="w"> </span>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>git@git.tsinghua.edu.cn:tanlabs-public/tanlabs.git
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&gt;<span class="w"> </span>git<span class="w"> </span>fetch<span class="w"> </span>upstream
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>&gt;<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>upstream/masterk
+</code></pre></div>
 <p>或者，更简单地，按照如下命令来合并：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>&gt;<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>git@git.tsinghua.edu.cn:tanlabs-public/tanlabs.git<span class="w"> </span>masterk
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&gt;<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>git@git.tsinghua.edu.cn:tanlabs-public/tanlabs.git<span class="w"> </span>masterk
+</code></pre></div>
 <h2 id="_4">与软件实验的区别<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li>硬件转发 IP 分组，性能更高</li>

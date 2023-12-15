@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1017,18 +1028,13 @@
 <li>stdio: 直接用标准输入输出，也是采用 pcap 格式，按照 VLAN 号来区分不同 interface。</li>
 </ol>
 <p>编程作业采用的是 stdio 后端，而实现的路由器采用的是 Linux 后端。后端的选择方法如下（在 Router-Lab 目录下执行）：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>mkdir<span class="w"> </span>build
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>build
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DBACKEND<span class="o">=</span>Linux
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>make<span class="w"> </span>router_hal<span class="w"> </span><span class="c1"># 编译 HAL 库，生成 ./HAL/librouter_hal.a</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>make<span class="w"> </span>capture<span class="w"> </span><span class="c1"># 编译 Example 中的 capture，生成 ./Example/capture</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>make<span class="w"> </span><span class="c1"># 编译 HAL 库和所有 Example</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>build
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>build
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cmake<span class="w"> </span>..<span class="w"> </span>-DBACKEND<span class="o">=</span>Linux
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>make<span class="w"> </span>router_hal<span class="w"> </span><span class="c1"># 编译 HAL 库，生成 ./HAL/librouter_hal.a</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>make<span class="w"> </span>capture<span class="w"> </span><span class="c1"># 编译 Example 中的 capture，生成 ./Example/capture</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>make<span class="w"> </span><span class="c1"># 编译 HAL 库和所有 Example</span>
+</code></pre></div>
 <p>其它后端类似设置即可。</p>
 <p>如果你不想用 CMake，你可以直接把 <code>router_hal.h</code> 放到你的 Header Include Path 中，然后把对应后端的文件（如 <code>HAL/src/linux/router_hal.cpp</code>）编译并链接进你的程序，同时在编译选项中写 <code>-DROUTER_BACKEND_LINUX</code> （即 ROUTER_BACKEND_ 加上后端的大写形式）。可以参考 <code>Homework/internet-checksum/Makefile</code> 中相关部分。</p>
 <p>在这个时候，你应该可以通过 HAL 的编译。</p>

@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -990,59 +1001,35 @@
 <p>在 TANLabs 提交后，会在实验室的实验网络下进行真机评测。你的软件会运行在树莓派上，和平台提供的机器组成如下的拓扑：</p>
 <p><img alt="Topology" src="../img/topology_ripng.png" /></p>
 <p>这一阶段，PC1、R1、R3、PC2 都由 TANLabs 自动配置和提供，两台路由器上均运行 BIRD 作为标准的路由软件实现。你代码所运行在的树莓派处于 R2 的位置。其中 R2 实际用到的只有两个口，剩余两个口按顺序配置为 <code>fd00::8:1/112</code> 和 <code>fd00::9:1/112</code> （见 <code>Router-Lab/Homework/router/main.cpp</code> 代码中 ROUTER_R2 部分）。初始情况下，R1 和 R3 先不启动 RIP 协议处理程序，这些机器的系统路由表如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>PC1:
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>default via fd00::1:1 dev pc1r1
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>fd00::1:0/112 dev pc1r1 scope link
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>R1:
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>fd00::1:0/112 dev r1pc1 scope link
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>fd00::3:0/112 dev r1r2 scope link
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>R3:
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>fd00::4:0/112 dev r3r2 scope link
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>fd00::5:0/112 dev r3pc2 scope link
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>PC2:
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>default via fd00::5:2 dev pc2r3
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>fd00::5:0/112 dev pc2r3 scope link
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>PC1:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>default via fd00::1:1 dev pc1r1
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>fd00::1:0/112 dev pc1r1 scope link
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>R1:
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>fd00::1:0/112 dev r1pc1 scope link
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>fd00::3:0/112 dev r1r2 scope link
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>R3:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>fd00::4:0/112 dev r3r2 scope link
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>fd00::5:0/112 dev r3pc2 scope link
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>PC2:
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>default via fd00::5:2 dev pc2r3
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>fd00::5:0/112 dev pc2r3 scope link
+</code></pre></div>
 <p>上面的每个网口名称格式都是两个机器拼接而成，如 <code>pc1r1</code> 代表 pc1 上通往 r1 的网口。此时，接上你的树莓派，按照图示连接两侧的 R1 和 R3 后，从 PC1 到 PC2 是不通的。接着，在 R1 和 R3 上都开启 RIPng 协议处理程序 BIRD，它们分别会在自己的 RIPng 报文中宣告 <code>fd00::1:0/112</code> 和 <code>fd00::5:0/112</code> 的路由。一段时间后它们的路由表（即直连路由 + RIPng 收到的路由）应该变成这样：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>R1:
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>fd00::1:0/112 dev r1pc1 scope link
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>fd00::3:0/112 dev r1r2 scope link
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>fd00::4:0/112 via fd00::3:2 dev r1r2
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>fd00::5:0/112 via fd00::3:2 dev r1r2
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>fd00::8:0/112 via fd00::3:2 dev r1r2
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a>fd00::9:0/112 via fd00::3:2 dev r1r2
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a>R3:
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a>fd00::1:0/112 via fd00::4:1 dev r3r2
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>fd00::3:0/112 via fd00::4:1 dev r3r2
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a>fd00::4:0/112 dev r3r2 scope link
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>fd00::5:0/112 dev r3pc2 scope link
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a>fd00::8:0/112 via fd00::4:1 dev r3r2
-<a id="__codelineno-1-14" name="__codelineno-1-14"></a>fd00::9:0/112 via fd00::4:1 dev r3r2
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>R1:
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>fd00::1:0/112 dev r1pc1 scope link
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>fd00::3:0/112 dev r1r2 scope link
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>fd00::4:0/112 via fd00::3:2 dev r1r2
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>fd00::5:0/112 via fd00::3:2 dev r1r2
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>fd00::8:0/112 via fd00::3:2 dev r1r2
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>fd00::9:0/112 via fd00::3:2 dev r1r2
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>R3:
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>fd00::1:0/112 via fd00::4:1 dev r3r2
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>fd00::3:0/112 via fd00::4:1 dev r3r2
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>fd00::4:0/112 dev r3r2 scope link
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>fd00::5:0/112 dev r3pc2 scope link
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>fd00::8:0/112 via fd00::4:1 dev r3r2
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>fd00::9:0/112 via fd00::4:1 dev r3r2
+</code></pre></div>
 <p>在 Linux 中，上面的 <code>via fd00:3:2</code> 和 <code>via fd00::4:1</code> 在实际情况下会变成对应的 fe80 开头的 Link Local 地址。</p>
 <p>在代码中，已经为大家设置好了一些常量，根据 ROUTER_R{1,2,3} 宏的不同定义取不同的值。在 <code>Homework/router</code> 目录下可以看到名为 <code>r1</code> <code>r2</code> <code>r3</code> 的目录，每个目录下都有 Makefile，分别编译出不同宏定义下的路由器。</p>
 <h2 id="_2">检查内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>

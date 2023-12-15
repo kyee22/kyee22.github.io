@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1020,24 +1031,16 @@
 <h4 id="netns">netns 使用方法<a class="headerlink" href="#netns" title="Permanent link">&para;</a></h4>
 <p>针对 netns，在下面提供了一些简单的指导：</p>
 <p>和 network namespace 相关的操作的命令是 <code>ip netns</code>。例如想要创建两个 namespace 并让其能够互相通信：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span>
-<span class="normal"><a href="#__codelineno-0-4">4</a></span>
-<span class="normal"><a href="#__codelineno-0-5">5</a></span>
-<span class="normal"><a href="#__codelineno-0-6">6</a></span>
-<span class="normal"><a href="#__codelineno-0-7">7</a></span>
-<span class="normal"><a href="#__codelineno-0-8">8</a></span>
-<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>ip<span class="w"> </span>netns<span class="w"> </span>add<span class="w"> </span>net0<span class="w"> </span><span class="c1"># 创建名为 &quot;net0&quot; 的 namespace</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>ip<span class="w"> </span>netns<span class="w"> </span>add<span class="w"> </span>net1
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>veth-net0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>veth<span class="w"> </span>peer<span class="w"> </span>name<span class="w"> </span>veth-net1<span class="w"> </span><span class="c1"># 创建一对相互连接的 veth pair</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net0<span class="w"> </span>netns<span class="w"> </span>net0<span class="w"> </span><span class="c1"># 将 veth 一侧加入到一个 namespace 中</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net1<span class="w"> </span>netns<span class="w"> </span>net1<span class="w"> </span><span class="c1"># 配置 veth 另一侧</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net0<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net0<span class="w"> </span>up
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net0<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.1.1.1/24<span class="w"> </span>dev<span class="w"> </span>veth-net0<span class="w"> </span><span class="c1"># 给 veth 一侧配上 ip 地址</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net1<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net1<span class="w"> </span>up
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net1<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.1.1.2/24<span class="w"> </span>dev<span class="w"> </span>veth-net1
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ip<span class="w"> </span>netns<span class="w"> </span>add<span class="w"> </span>net0<span class="w"> </span><span class="c1"># 创建名为 &quot;net0&quot; 的 namespace</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ip<span class="w"> </span>netns<span class="w"> </span>add<span class="w"> </span>net1
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ip<span class="w"> </span>link<span class="w"> </span>add<span class="w"> </span>veth-net0<span class="w"> </span><span class="nb">type</span><span class="w"> </span>veth<span class="w"> </span>peer<span class="w"> </span>name<span class="w"> </span>veth-net1<span class="w"> </span><span class="c1"># 创建一对相互连接的 veth pair</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net0<span class="w"> </span>netns<span class="w"> </span>net0<span class="w"> </span><span class="c1"># 将 veth 一侧加入到一个 namespace 中</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net1<span class="w"> </span>netns<span class="w"> </span>net1<span class="w"> </span><span class="c1"># 配置 veth 另一侧</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net0<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net0<span class="w"> </span>up
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net0<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.1.1.1/24<span class="w"> </span>dev<span class="w"> </span>veth-net0<span class="w"> </span><span class="c1"># 给 veth 一侧配上 ip 地址</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net1<span class="w"> </span>ip<span class="w"> </span>link<span class="w"> </span><span class="nb">set</span><span class="w"> </span>veth-net1<span class="w"> </span>up
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>net1<span class="w"> </span>ip<span class="w"> </span>addr<span class="w"> </span>add<span class="w"> </span><span class="m">10</span>.1.1.2/24<span class="w"> </span>dev<span class="w"> </span>veth-net1
+</code></pre></div>
 <p>上面的命令配置了如下的虚拟网络：</p>
 <p><img alt="netns" src="../img/netns.png" /></p>
 <p>配置完成后你可以运行 <code>ip netns exec net0 ping 10.1.1.2</code> 来测试在 net0 上是否能够 ping 到 net1。</p>

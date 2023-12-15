@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1007,24 +1018,18 @@
 <p><a href="http://www.policyrouting.com/iproute2.doc.html">IPROUTE2 Utility Suite Howto</a></p>
 <h2 id="ip-addr"><code>ip addr</code> 子命令<a class="headerlink" href="#ip-addr" title="Permanent link">&para;</a></h2>
 <p>第一个比较重要的子命令是 <code>ip addr</code>，其简写为 <code>ip a</code> ，意思是列出所有网口信息和地址信息，如：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>2: enp14s0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default qlen 1000
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>    link/ether 12:34:56:78:9a:bc brd ff:ff:ff:ff:ff:ff
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>2: enp14s0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN group default qlen 1000
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    link/ether 12:34:56:78:9a:bc brd ff:ff:ff:ff:ff:ff
+</code></pre></div>
 <p>代表有一个名为 <code>enp14s0</code> 的网口，状态为 <code>DOWN</code> 表示没有启用，反之 <code>UP</code> 表示已经启用，下面则是它的 MAC 地址，其他部分可以忽略。</p>
 <p>每个网口可以有自己的 IP 地址，如：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span>
-<span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>2: enp14s0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state UP group default qlen 1000
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a>    link/ether 12:34:56:78:9a:bc brd ff:ff:ff:ff:ff:ff
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>    inet 1.2.3.4/26 brd 1.2.3.127 scope global dynamic enp14s0
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a>       valid_lft 233sec preferred_lft 233sec
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>    inet6 2402:f000::233/128 scope global dynamic noprefixroute
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>       valid_lft 23333sec preferred_lft 23333sec
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>2: enp14s0: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state UP group default qlen 1000
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    link/ether 12:34:56:78:9a:bc brd ff:ff:ff:ff:ff:ff
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    inet 1.2.3.4/26 brd 1.2.3.127 scope global dynamic enp14s0
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>       valid_lft 233sec preferred_lft 233sec
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    inet6 2402:f000::233/128 scope global dynamic noprefixroute
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>       valid_lft 23333sec preferred_lft 23333sec
+</code></pre></div>
 <p>这代表它有一个 IPv4 地址 1.2.3.4 和一个 IPv6 地址 2404:f000::233，其表示方法为 CIDR，即地址和前缀长度。</p>
 <p>如果要给网口配置一个 IP 地址，命令为 <code>ip addr add $addr/$prefix_len dev $interface</code> 其中 $addr $prefix_len $interface 是需要你填入的，比如对于上面这个例子，可能之前执行过 <code>ip addr add 1.2.3.4/26 dev enp14s0</code> 和 <code>ip addr add 2402:f000::223/128 dev enp14s0</code>。删除只要把 add 换成 del 即可。</p>
 <p>需要注意的是，在运行你实现的路由器的时候，请不要在相关的网口上配置 IP 地址，因为 HAL 绕过了 Linux 网络栈，如果你配置了 IP 地址，在 Linux 和路由器的双重作用下可能有意外的效果。</p>
@@ -1034,22 +1039,18 @@
 <p>另外，在创建 veth 的时候，使用的命令是 <code>ip link add $name1 type veth peer name $name2</code>，它会创建一对 interface，分别叫做 $name1 和 $name2，所有从 $name1 发出的流量都可以在 $name2 收到，反之亦然。可以理解成一根虚拟的网线，两端分别是 $name1 和 $name2。</p>
 <h2 id="ip-route"><code>ip route</code> 子命令<a class="headerlink" href="#ip-route" title="Permanent link">&para;</a></h2>
 <p>第三个重要的子命令是 <code>ip route</code>，其简写为 <code>ip r</code> ，它会显示 Linux 系统中的 IPv4 路由表：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>default via 1.2.3.1 dev enp14s0 proto static
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>1.2.3.0/26 dev enp14s0 proto kernel scope link src 1.2.3.4
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>default via 1.2.3.1 dev enp14s0 proto static
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>1.2.3.0/26 dev enp14s0 proto kernel scope link src 1.2.3.4
+</code></pre></div>
 <p>如果要查看 IPv6 的路由表，运行 <code>ip -6 r</code>：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>default via fe80::aaaa:aaff:feaa:aaaa dev enp14s0 proto ra metric 1024 expires 159sec hoplimit 64 pref medium
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>fe80::/64 dev enp14s0 proto kernel metric 256 pref medium
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>default via fe80::aaaa:aaff:feaa:aaaa dev enp14s0 proto ra metric 1024 expires 159sec hoplimit 64 pref medium
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>fe80::/64 dev enp14s0 proto kernel metric 256 pref medium
+</code></pre></div>
 <p>在上文中数次使用了类似的语法来表示一个路由表，其每一项的格式如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>ip/prefix dev interface scope link 是一条直连路由，表示在这个子网中，所有的 IP 地址都通过 interface 直连可达
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a>ip/prefix via another_ip dev interface 表示去往目标子网的 IP 分组，下一跳 IP 地址都是 another_ip，通过 interface 出去
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>default via another_ip dev interface 这里 default 代表 0.0.0.0/0 或者 ::/0，其实是上一种格式，表示一条前缀长度为 0 的路由
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ip/prefix dev interface scope link 是一条直连路由，表示在这个子网中，所有的 IP 地址都通过 interface 直连可达
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>ip/prefix via another_ip dev interface 表示去往目标子网的 IP 分组，下一跳 IP 地址都是 another_ip，通过 interface 出去
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>default via another_ip dev interface 这里 default 代表 0.0.0.0/0 或者 ::/0，其实是上一种格式，表示一条前缀长度为 0 的路由
+</code></pre></div>
 <p>至于一些额外的类似 <code>proto static</code> <code>proto kernel</code> <code>src 1.2.3.4</code> 的内容可以直接忽略。</p>
 <p>如果要修改的话，可以用 <code>ip route add</code> 接上你要添加的表项，相应地 <code>ip route del</code> 就是删除。例如，如果要删掉上面的默认路由，可以用 <code>ip route del default via 1.2.3.1 dev enp14s0</code> 实现。此外，值得注意的是，网络一般是双向的，在某台主机上添加去往另一个主机或子网的路由后，需要在目标主机或目标子网的路由器上添加回到这台主机的路由。此时，网络才能进行双向通信。</p>
 <h2 id="ip-netns"><code>ip netns</code> 子命令<a class="headerlink" href="#ip-netns" title="Permanent link">&para;</a></h2>

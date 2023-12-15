@@ -259,23 +259,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -505,6 +496,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -515,10 +526,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -529,8 +540,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -2231,80 +2242,44 @@
 <p>由于笔者能力有限，若要通过程序自动生成指令：<code>jr</code>指令容易造成死循环；<code>beq</code>指令命中概率低。</p>
 <p>故专门手动构造数据，使程序进行有限次循环跳转，再适时跳出。</p>
 <p>测试指令：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-0-10">10</a></span>
-<span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
-<span class="normal"><a href="#__codelineno-0-14">14</a></span>
-<span class="normal"><a href="#__codelineno-0-15">15</a></span>
-<span class="normal"><a href="#__codelineno-0-16">16</a></span>
-<span class="normal"><a href="#__codelineno-0-17">17</a></span>
-<span class="normal"><a href="#__codelineno-0-18">18</a></span>
-<span class="normal"><a href="#__codelineno-0-19">19</a></span>
-<span class="normal"><a href="#__codelineno-0-20">20</a></span>
-<span class="normal"><a href="#__codelineno-0-21">21</a></span>
-<span class="normal"><a href="#__codelineno-0-22">22</a></span>
-<span class="normal"><a href="#__codelineno-0-23">23</a></span>
-<span class="normal"><a href="#__codelineno-0-24">24</a></span>
-<span class="normal"><a href="#__codelineno-0-25">25</a></span>
-<span class="normal"><a href="#__codelineno-0-26">26</a></span>
-<span class="normal"><a href="#__codelineno-0-27">27</a></span>
-<span class="normal"><a href="#__codelineno-0-28">28</a></span>
-<span class="normal"><a href="#__codelineno-0-29">29</a></span>
-<span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span>
-<span class="normal"><a href="#__codelineno-0-32">32</a></span>
-<span class="normal"><a href="#__codelineno-0-33">33</a></span>
-<span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span>
-<span class="normal"><a href="#__codelineno-0-36">36</a></span>
-<span class="normal"><a href="#__codelineno-0-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>ori $28,$0,0
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>ori $29,$0,0
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>ori $t1,$0,280
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a>ori $t0,$0,40
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a>ori $s1,$0,4
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a>ori $s0,$0,8
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a>ori $s7,$0,0x301c
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a>loop:beq $t1,$t0,loop_end
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a>    sub $t1,$t1,$s1
-<a id="__codelineno-0-10" name="__codelineno-0-10"></a>    add $t0,$t0,$s0
-<a id="__codelineno-0-11" name="__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    add $t2,$t0,$t1
-<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    sw $t2,0($t1)
-<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    sub $t3,$t0,$t1
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a>    sw $t3,12284($t3)
-<a id="__codelineno-0-17" name="__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18"></a>    jr $s7
-<a id="__codelineno-0-19" name="__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20"></a>loop_end:
-<a id="__codelineno-0-21" name="__codelineno-0-21"></a>lui $t0,0xffff
-<a id="__codelineno-0-22" name="__codelineno-0-22"></a>lui $t1,0xeeee
-<a id="__codelineno-0-23" name="__codelineno-0-23"></a>lui $s0,0xdddd
-<a id="__codelineno-0-24" name="__codelineno-0-24"></a>lui $s0,0xeeee
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26"></a>ori $s7,$0,8
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a>ori $s3,$0,4
-<a id="__codelineno-0-28" name="__codelineno-0-28"></a>jal go
-<a id="__codelineno-0-29" name="__codelineno-0-29"></a>lui $s5,0xaaaa
-<a id="__codelineno-0-30" name="__codelineno-0-30"></a>lui $s5,0xaaaa
-<a id="__codelineno-0-31" name="__codelineno-0-31"></a>lui $s5,0xbbcc
-<a id="__codelineno-0-32" name="__codelineno-0-32"></a>go:
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a>sub $s7,$s7,$s3
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a>beq $s7,$0,end
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a>jr $ra
-<a id="__codelineno-0-36" name="__codelineno-0-36"></a>end:
-<a id="__codelineno-0-37" name="__codelineno-0-37"></a>lui $s7,0xffee
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ori $28,$0,0
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ori $29,$0,0
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>ori $t1,$0,280
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>ori $t0,$0,40
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>ori $s1,$0,4
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ori $s0,$0,8
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>ori $s7,$0,0x301c
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>loop:beq $t1,$t0,loop_end
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    sub $t1,$t1,$s1
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    add $t0,$t0,$s0
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    add $t2,$t0,$t1
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    sw $t2,0($t1)
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    sub $t3,$t0,$t1
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    sw $t3,12284($t3)
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    jr $s7
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>loop_end:
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>lui $t0,0xffff
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>lui $t1,0xeeee
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>lui $s0,0xdddd
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>lui $s0,0xeeee
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>ori $s7,$0,8
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>ori $s3,$0,4
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>jal go
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>lui $s5,0xaaaa
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>lui $s5,0xaaaa
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>lui $s5,0xbbcc
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>go:
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>sub $s7,$s7,$s3
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>beq $s7,$0,end
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>jr $ra
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>end:
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>lui $s7,0xffee
+</code></pre></div>
 <p>测试结果：<font color=LimeGreen>ACCEPTED!</font></p>
 <p><img alt="image-20231105172614914" src="../img/%E7%BB%93%E6%9E%9C1.png" /></p>
 <h4 id="_18">压力测试<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
@@ -2334,121 +2309,66 @@
 </div>
 <p>解答：</p>
 <p>指令对应的控制信号如何取值：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Verilog</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-1-10">10</a></span>
-<span class="normal"><a href="#__codelineno-1-11">11</a></span>
-<span class="normal"><a href="#__codelineno-1-12">12</a></span>
-<span class="normal"><a href="#__codelineno-1-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">case</span><span class="p">(</span><span class="n">instr</span><span class="p">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="no">`_add_</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">        </span><span class="n">ALUOp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="p">......</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">end</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="no">`_sub_</span><span class="err">`</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="p">......</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">end</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="p">......</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="k">endcase</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">case</span><span class="p">(</span><span class="n">instr</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="no">`_add_</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="n">ALUOp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p">......</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="no">`_sub_</span><span class="err">`</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="p">......</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="p">......</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">endcase</span>
+</code></pre></div>
 <p>控制信号每种取值所对应的指令：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Verilog</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#__codelineno-2-31">31</a></span>
-<span class="normal"><a href="#__codelineno-2-32">32</a></span>
-<span class="normal"><a href="#__codelineno-2-33">33</a></span>
-<span class="normal"><a href="#__codelineno-2-34">34</a></span>
-<span class="normal"><a href="#__codelineno-2-35">35</a></span>
-<span class="normal"><a href="#__codelineno-2-36">36</a></span>
-<span class="normal"><a href="#__codelineno-2-37">37</a></span>
-<span class="normal"><a href="#__codelineno-2-38">38</a></span>
-<span class="normal"><a href="#__codelineno-2-39">39</a></span>
-<span class="normal"><a href="#__codelineno-2-40">40</a></span>
-<span class="normal"><a href="#__codelineno-2-41">41</a></span>
-<span class="normal"><a href="#__codelineno-2-42">42</a></span>
-<span class="normal"><a href="#__codelineno-2-43">43</a></span>
-<span class="normal"><a href="#__codelineno-2-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1">//////////////////////   与逻辑   //////////////////////</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">// R型指令</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">Funct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b100000</span><span class="p">);</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">Funct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b100010</span><span class="p">);</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_jr_</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">Funct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b001000</span><span class="p">);</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1">// I型指令</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="c1">// 运算类</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_ori_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b001101</span><span class="p">);</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_lui_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b001111</span><span class="p">);</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="c1">// b 型指令</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_beq_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000100</span><span class="p">);</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="c1">// 访存类</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_lw_</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b100011</span><span class="p">);</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_sw_</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b101011</span><span class="p">);</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1">// j型指令</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_jal_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000011</span><span class="p">);</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a>
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="c1">//////////////////////   或逻辑   //////////////////////</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="p">......</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a>
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a>
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="err">​</span><span class="w">     </span>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="p">......</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_lui_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_lw_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37"></a>
-<a id="__codelineno-2-38" name="__codelineno-2-38"></a>
-<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="err">​</span><span class="w">     </span>
-<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_ori_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_lui_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_lw_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41"></a>
-<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="k">assign</span><span class="w"> </span><span class="n">MemWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_sw_</span><span class="p">;</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43"></a>
-<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="p">......</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">//////////////////////   与逻辑   //////////////////////</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// R型指令</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">Funct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b100000</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">Funct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b100010</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_jr_</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000000</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">Funct</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b001000</span><span class="p">);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">// I型指令</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="c1">// 运算类</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_ori_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b001101</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_lui_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b001111</span><span class="p">);</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="c1">// b 型指令</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_beq_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000100</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="c1">// 访存类</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">        </span><span class="kt">wire</span><span class="w"> </span><span class="n">_lw_</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b100011</span><span class="p">);</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_sw_</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b101011</span><span class="p">);</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1">// j型指令</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">_jal_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Op</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">6</span><span class="mb">&#39;b000011</span><span class="p">);</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="c1">//////////////////////   或逻辑   //////////////////////</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="p">......</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="err">​</span><span class="w">     </span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">......</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_lui_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegSrc</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_lw_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="err">​</span><span class="w">     </span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_ori_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_lui_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_lw_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="k">assign</span><span class="w"> </span><span class="n">MemWrite</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_sw_</span><span class="p">;</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="p">......</span>
+</code></pre></div>
 <ul>
 <li>
 <p>在Verilog实现时，采取第二中译码方式更好</p>
@@ -2501,30 +2421,22 @@
 <p>错误写法：</p>
 </li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Verilog</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
-<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
+</code></pre></div>
 <p>这样写的话RegDst[7:2]都是z（高阻态）</p>
 <ul>
 <li>正确写法：</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Verilog</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
-<span class="normal"><a href="#__codelineno-4-2">2</a></span>
-<span class="normal"><a href="#__codelineno-4-3">3</a></span>
-<span class="normal"><a href="#__codelineno-4-4">4</a></span>
-<span class="normal"><a href="#__codelineno-4-5">5</a></span>
-<span class="normal"><a href="#__codelineno-4-6">6</a></span>
-<span class="normal"><a href="#__codelineno-4-7">7</a></span>
-<span class="normal"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
+</code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>注意Verilog运算符的优先级！</p>

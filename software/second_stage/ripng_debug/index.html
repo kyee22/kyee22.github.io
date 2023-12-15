@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1062,192 +1073,110 @@
 <li>所有项目评测完毕后，可以退出 R1 和 R3 上的 BIRD 和 R2 上的路由器。</li>
 </ol>
 <p>在评测过程中，如果发现某一步结果不对，可以使用 tcpdump 或者 wireshark 来进行抓包。具体地，如果要在某个 netns 中抓包（例如 PC1），需要用如下的命令来运行 tcpdump 或者 wireshark：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo<span class="w"> </span>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>PC1<span class="w"> </span>tcpdump<span class="w"> </span><span class="o">[</span>some<span class="w"> </span>arguments<span class="o">]</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>sudo<span class="w"> </span>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>PC1<span class="w"> </span>wireshark
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>PC1<span class="w"> </span>tcpdump<span class="w"> </span><span class="o">[</span>some<span class="w"> </span>arguments<span class="o">]</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>PC1<span class="w"> </span>wireshark
+</code></pre></div>
 <h3 id="_3">软件配置<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>你实现的路由器实际上包括两部分功能：IPv6 分组转发和路由协议。在第二阶段中，自己写的路由器运行在 R2 上，而 R1 和 R3 都需要运行标准的路由器。那么，在 Linux 环境中，为了实现路由器的功能，需要下面两个部分：分组转发和路由协议。</p>
 <h4 id="_4">分组转发<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>为了打开 Linux 的转发功能（例如 R1 和 R3），需要用 root 身份运行下面的命令（重启后失效）：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
-<span class="normal"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># enable forwarding for all interfaces</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/proc/sys/net/ipv4/conf/all/forwarding
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># enable forwarding for all interfaces</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>&gt;<span class="w"> </span>/proc/sys/net/ipv4/conf/all/forwarding
+</code></pre></div>
 <p>如果你在 netns 中用 Linux 自带的功能做转发需要运行如下命令：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="c1"># enable forwarding for all interfaces in netns R1</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>R1<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo 1 &gt; /proc/sys/net/ipv4/conf/all/forwarding&quot;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># enable forwarding for all interfaces in netns R1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ip<span class="w"> </span>netns<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>R1<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo 1 &gt; /proc/sys/net/ipv4/conf/all/forwarding&quot;</span>
+</code></pre></div>
 <h4 id="_5">路由协议<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>为了实现路由协议，需要运行 BIRD。下面提供一个 BIRD（BIRD Internet Routing Daemon，安装方法 <code>apt install bird</code>）的参考配置，以 Debian 为例，如下修改文件 <code>/etc/bird.conf</code> 即可。</p>
 <p>需要注意的是，BIRD v1.6 中，为了 IPv6 版本的 BIRD 叫做 <code>bird6</code>，而 IPv4 版本的 BIRD 叫做 <code>bird</code>；在 BIRD v2.0 中，两个版本合并了，因此都是 <code>bird</code>。</p>
 <h5 id="bird-v20">BIRD v2.0 配置<a class="headerlink" href="#bird-v20" title="Permanent link">&para;</a></h5>
 <p><a href="https://bird.network.cz/?get_doc&amp;f=bird.html&amp;v=20">BIRD v2.0 官方配置文档</a></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-3-10">10</a></span>
-<span class="normal"><a href="#__codelineno-3-11">11</a></span>
-<span class="normal"><a href="#__codelineno-3-12">12</a></span>
-<span class="normal"><a href="#__codelineno-3-13">13</a></span>
-<span class="normal"><a href="#__codelineno-3-14">14</a></span>
-<span class="normal"><a href="#__codelineno-3-15">15</a></span>
-<span class="normal"><a href="#__codelineno-3-16">16</a></span>
-<span class="normal"><a href="#__codelineno-3-17">17</a></span>
-<span class="normal"><a href="#__codelineno-3-18">18</a></span>
-<span class="normal"><a href="#__codelineno-3-19">19</a></span>
-<span class="normal"><a href="#__codelineno-3-20">20</a></span>
-<span class="normal"><a href="#__codelineno-3-21">21</a></span>
-<span class="normal"><a href="#__codelineno-3-22">22</a></span>
-<span class="normal"><a href="#__codelineno-3-23">23</a></span>
-<span class="normal"><a href="#__codelineno-3-24">24</a></span>
-<span class="normal"><a href="#__codelineno-3-25">25</a></span>
-<span class="normal"><a href="#__codelineno-3-26">26</a></span>
-<span class="normal"><a href="#__codelineno-3-27">27</a></span>
-<span class="normal"><a href="#__codelineno-3-28">28</a></span>
-<span class="normal"><a href="#__codelineno-3-29">29</a></span>
-<span class="normal"><a href="#__codelineno-3-30">30</a></span>
-<span class="normal"><a href="#__codelineno-3-31">31</a></span>
-<span class="normal"><a href="#__codelineno-3-32">32</a></span>
-<span class="normal"><a href="#__codelineno-3-33">33</a></span>
-<span class="normal"><a href="#__codelineno-3-34">34</a></span>
-<span class="normal"><a href="#__codelineno-3-35">35</a></span>
-<span class="normal"><a href="#__codelineno-3-36">36</a></span>
-<span class="normal"><a href="#__codelineno-3-37">37</a></span>
-<span class="normal"><a href="#__codelineno-3-38">38</a></span>
-<span class="normal"><a href="#__codelineno-3-39">39</a></span>
-<span class="normal"><a href="#__codelineno-3-40">40</a></span>
-<span class="normal"><a href="#__codelineno-3-41">41</a></span>
-<span class="normal"><a href="#__codelineno-3-42">42</a></span>
-<span class="normal"><a href="#__codelineno-3-43">43</a></span>
-<span class="normal"><a href="#__codelineno-3-44">44</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a># log &quot;bird.log&quot; all; # 可以将 log 输出到文件中
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a># debug protocols all; # 如果要更详细的信息，可以打开这个
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a>router id 网口IP地址; # 随便写一个，保证唯一性即可
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a>protocol device {
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a>}
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>protocol kernel {
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a>    # 表示 BIRD 会把系统的路由表通过 RIP 发出去，也会把收到的 RIP 信息写入系统路由表
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a>    # 你可以用 `ip route` 命令查看系统的路由表
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>    # 退出 BIRD 后从系统中删除路由
-<a id="__codelineno-3-13" name="__codelineno-3-13"></a>    persist no;
-<a id="__codelineno-3-14" name="__codelineno-3-14"></a>    # 从系统学习路由
-<a id="__codelineno-3-15" name="__codelineno-3-15"></a>    learn;
-<a id="__codelineno-3-16" name="__codelineno-3-16"></a>    ipv6 {
-<a id="__codelineno-3-17" name="__codelineno-3-17"></a>        # 导出路由到系统，可以用 `ip r` 看到
-<a id="__codelineno-3-18" name="__codelineno-3-18"></a>        # 也可以用 `export none` 表示不导出，用 birdc show route 查看路由
-<a id="__codelineno-3-19" name="__codelineno-3-19"></a>        export all;
-<a id="__codelineno-3-20" name="__codelineno-3-20"></a>    };
-<a id="__codelineno-3-21" name="__codelineno-3-21"></a>}
-<a id="__codelineno-3-22" name="__codelineno-3-22"></a>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a>protocol static {
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a>    ipv6 { };
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a>    route a:b:c:d::/64 via &quot;网口名称&quot;; # 可以手动添加一个静态路由方便调试，只有在这个网口存在并且为 UP 时才生效
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a>}
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a>protocol direct {
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a>    ipv6;
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a>    # 把网口上的直连路由导入到路由协议中
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a>    interface &quot;网口名称&quot;;
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a>}
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a>protocol rip ng {
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a>    ipv6 {
-<a id="__codelineno-3-37" name="__codelineno-3-37"></a>        import all;
-<a id="__codelineno-3-38" name="__codelineno-3-38"></a>        export all;
-<a id="__codelineno-3-39" name="__codelineno-3-39"></a>    };
-<a id="__codelineno-3-40" name="__codelineno-3-40"></a>    debug all;
-<a id="__codelineno-3-41" name="__codelineno-3-41"></a>    interface &quot;网口名称&quot; { # 网口名称必须存在，否则 BIRD 会直接退出
-<a id="__codelineno-3-42" name="__codelineno-3-42"></a>        update time 5; # 5 秒一次更新，方便调试
-<a id="__codelineno-3-43" name="__codelineno-3-43"></a>    };
-<a id="__codelineno-3-44" name="__codelineno-3-44"></a>}
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># log &quot;bird.log&quot; all; # 可以将 log 输出到文件中
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a># debug protocols all; # 如果要更详细的信息，可以打开这个
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>router id 网口IP地址; # 随便写一个，保证唯一性即可
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>protocol device {
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>}
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>protocol kernel {
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    # 表示 BIRD 会把系统的路由表通过 RIP 发出去，也会把收到的 RIP 信息写入系统路由表
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    # 你可以用 `ip route` 命令查看系统的路由表
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    # 退出 BIRD 后从系统中删除路由
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    persist no;
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    # 从系统学习路由
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    learn;
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    ipv6 {
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        # 导出路由到系统，可以用 `ip r` 看到
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>        # 也可以用 `export none` 表示不导出，用 birdc show route 查看路由
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>        export all;
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    };
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>}
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>protocol static {
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    ipv6 { };
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    route a:b:c:d::/64 via &quot;网口名称&quot;; # 可以手动添加一个静态路由方便调试，只有在这个网口存在并且为 UP 时才生效
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>}
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>protocol direct {
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>    ipv6;
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    # 把网口上的直连路由导入到路由协议中
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    interface &quot;网口名称&quot;;
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>}
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>protocol rip ng {
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>    ipv6 {
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>        import all;
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>        export all;
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>    };
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>    debug all;
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>    interface &quot;网口名称&quot; { # 网口名称必须存在，否则 BIRD 会直接退出
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>        update time 5; # 5 秒一次更新，方便调试
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>    };
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>}
+</code></pre></div>
 <h5 id="bird-v16">BIRD v1.6 配置<a class="headerlink" href="#bird-v16" title="Permanent link">&para;</a></h5>
 <p><a href="https://bird.network.cz/?get_doc&amp;f=bird.html&amp;v=16">BIRD v1.6 官方配置文档</a></p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-4-10">10</a></span>
-<span class="normal"><a href="#__codelineno-4-11">11</a></span>
-<span class="normal"><a href="#__codelineno-4-12">12</a></span>
-<span class="normal"><a href="#__codelineno-4-13">13</a></span>
-<span class="normal"><a href="#__codelineno-4-14">14</a></span>
-<span class="normal"><a href="#__codelineno-4-15">15</a></span>
-<span class="normal"><a href="#__codelineno-4-16">16</a></span>
-<span class="normal"><a href="#__codelineno-4-17">17</a></span>
-<span class="normal"><a href="#__codelineno-4-18">18</a></span>
-<span class="normal"><a href="#__codelineno-4-19">19</a></span>
-<span class="normal"><a href="#__codelineno-4-20">20</a></span>
-<span class="normal"><a href="#__codelineno-4-21">21</a></span>
-<span class="normal"><a href="#__codelineno-4-22">22</a></span>
-<span class="normal"><a href="#__codelineno-4-23">23</a></span>
-<span class="normal"><a href="#__codelineno-4-24">24</a></span>
-<span class="normal"><a href="#__codelineno-4-25">25</a></span>
-<span class="normal"><a href="#__codelineno-4-26">26</a></span>
-<span class="normal"><a href="#__codelineno-4-27">27</a></span>
-<span class="normal"><a href="#__codelineno-4-28">28</a></span>
-<span class="normal"><a href="#__codelineno-4-29">29</a></span>
-<span class="normal"><a href="#__codelineno-4-30">30</a></span>
-<span class="normal"><a href="#__codelineno-4-31">31</a></span>
-<span class="normal"><a href="#__codelineno-4-32">32</a></span>
-<span class="normal"><a href="#__codelineno-4-33">33</a></span>
-<span class="normal"><a href="#__codelineno-4-34">34</a></span>
-<span class="normal"><a href="#__codelineno-4-35">35</a></span>
-<span class="normal"><a href="#__codelineno-4-36">36</a></span>
-<span class="normal"><a href="#__codelineno-4-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a># log &quot;bird.log&quot; all; # 可以将 log 输出到文件中
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a># debug protocols all; # 如果要更详细的信息，可以打开这个
-<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a>router id 网口IP地址; # 随便写一个，保证唯一性即可
-<a id="__codelineno-4-5" name="__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6"></a>protocol device {
-<a id="__codelineno-4-7" name="__codelineno-4-7"></a>}
-<a id="__codelineno-4-8" name="__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9"></a>protocol kernel {
-<a id="__codelineno-4-10" name="__codelineno-4-10"></a>    # 表示 BIRD 会把系统的路由表通过 RIP 发出去，也会把收到的 RIP 信息写入系统路由表
-<a id="__codelineno-4-11" name="__codelineno-4-11"></a>    # 你可以用 `ip route` 命令查看系统的路由表
-<a id="__codelineno-4-12" name="__codelineno-4-12"></a>    # 退出 BIRD 后从系统中删除路由
-<a id="__codelineno-4-13" name="__codelineno-4-13"></a>    persist off;
-<a id="__codelineno-4-14" name="__codelineno-4-14"></a>    # 从系统学习路由
-<a id="__codelineno-4-15" name="__codelineno-4-15"></a>    learn;
-<a id="__codelineno-4-16" name="__codelineno-4-16"></a>    # 导出路由到系统，可以用 `ip r` 看到
-<a id="__codelineno-4-17" name="__codelineno-4-17"></a>    # 也可以用 `export none` 表示不导出，用 birdc show route 查看路由
-<a id="__codelineno-4-18" name="__codelineno-4-18"></a>    export all;
-<a id="__codelineno-4-19" name="__codelineno-4-19"></a>}
-<a id="__codelineno-4-20" name="__codelineno-4-20"></a>
-<a id="__codelineno-4-21" name="__codelineno-4-21"></a>protocol static {
-<a id="__codelineno-4-22" name="__codelineno-4-22"></a>    route a:b:c:d::/64 via &quot;网口名称&quot;; # 可以手动添加一个静态路由方便调试，只有在这个网口存在并且为 UP 时才生效
-<a id="__codelineno-4-23" name="__codelineno-4-23"></a>}
-<a id="__codelineno-4-24" name="__codelineno-4-24"></a>
-<a id="__codelineno-4-25" name="__codelineno-4-25"></a>protocol direct {
-<a id="__codelineno-4-26" name="__codelineno-4-26"></a>    # 把网口上的直连路由导入到路由协议中
-<a id="__codelineno-4-27" name="__codelineno-4-27"></a>    interface &quot;网口名称&quot;;
-<a id="__codelineno-4-28" name="__codelineno-4-28"></a>}
-<a id="__codelineno-4-29" name="__codelineno-4-29"></a>
-<a id="__codelineno-4-30" name="__codelineno-4-30"></a>protocol rip {
-<a id="__codelineno-4-31" name="__codelineno-4-31"></a>    import all;
-<a id="__codelineno-4-32" name="__codelineno-4-32"></a>    export all;
-<a id="__codelineno-4-33" name="__codelineno-4-33"></a>    debug all;
-<a id="__codelineno-4-34" name="__codelineno-4-34"></a>    interface &quot;网口名称&quot; { # 网口名称必须存在，否则 BIRD 会直接退出
-<a id="__codelineno-4-35" name="__codelineno-4-35"></a>        update time 5; # 5 秒一次更新，方便调试
-<a id="__codelineno-4-36" name="__codelineno-4-36"></a>    };
-<a id="__codelineno-4-37" name="__codelineno-4-37"></a>}
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a># log &quot;bird.log&quot; all; # 可以将 log 输出到文件中
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a># debug protocols all; # 如果要更详细的信息，可以打开这个
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>router id 网口IP地址; # 随便写一个，保证唯一性即可
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>protocol device {
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>}
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>protocol kernel {
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    # 表示 BIRD 会把系统的路由表通过 RIP 发出去，也会把收到的 RIP 信息写入系统路由表
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    # 你可以用 `ip route` 命令查看系统的路由表
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    # 退出 BIRD 后从系统中删除路由
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    persist off;
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    # 从系统学习路由
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    learn;
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    # 导出路由到系统，可以用 `ip r` 看到
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    # 也可以用 `export none` 表示不导出，用 birdc show route 查看路由
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    export all;
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>}
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>protocol static {
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    route a:b:c:d::/64 via &quot;网口名称&quot;; # 可以手动添加一个静态路由方便调试，只有在这个网口存在并且为 UP 时才生效
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>}
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>protocol direct {
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>    # 把网口上的直连路由导入到路由协议中
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>    interface &quot;网口名称&quot;;
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>}
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>protocol rip {
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>    import all;
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>    export all;
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>    debug all;
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>    interface &quot;网口名称&quot; { # 网口名称必须存在，否则 BIRD 会直接退出
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>        update time 5; # 5 秒一次更新，方便调试
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>    };
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>}
+</code></pre></div>
 </details>
 <h5 id="_6">配置使用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
 <p>这里的网口名字对应你连接到路由器的网口，也要配置一个固定的 IP 地址，需要和路由器对应网口的 IP 在同一个网段内。配置固定 IP 地址的命令格式为 <code>ip a add IP地址/前缀长度 dev 网口名称</code>，你可以用 <code>ip a</code> 命令看到所有网口的信息。</p>

@@ -257,23 +257,14 @@
   
     
     
-      
-  
-  
-  
-    
-    
       <li class="md-tabs__item">
-        <a href="../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-tabs__link">
+        <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
           
   
   工科大学物理(2)
 
         </a>
       </li>
-    
-  
-
     
   
 
@@ -499,6 +490,26 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -509,10 +520,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -523,8 +534,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             量子力学
           </label>
@@ -1056,12 +1067,10 @@
 <p>根据上面的逻辑，可以很自然地按照地址由大到小进行划分，然后构造上面的“匹配”和“不匹配”条件。但是，一旦条目增加，那么第二条出现不匹配第一条的条件，第三条出现不匹配第一条和第二条的条件，等等，这个算法复杂度就太大了。</p>
 <p>换个思路，如果只考虑匹配最精确的那一条，就不需要进行“不匹配”的判断了。比如，<span class="arithmatex"><span class="MathJax_Preview">中国/北京市/海淀区/清华大学</span><script type="math/tex">中国/北京市/海淀区/清华大学</script></span> 匹配上面的三条，但是第一条最精确，所以选择第一条；<span class="arithmatex"><span class="MathJax_Preview">中国/上海市/浦东新区/浦东机场</span><script type="math/tex">中国/上海市/浦东新区/浦东机场</script></span>，匹配了上面后两条，但是第二条最精确，所以选择第二条；<span class="arithmatex"><span class="MathJax_Preview">美国/加利福尼亚州</span><script type="math/tex">美国/加利福尼亚州</script></span> 只匹配最后一条，那就是选择第三条。对于算法来说，从多个匹配里找到最精确的，比每次匹配时都要排除掉前面已有的情况，要更加容易。这就是为什么路由表要采用最长前缀匹配。</p>
 <p>那么，上面的这个逻辑对应的路由表就像：</p>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span>
-<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>* -&gt; 中国转运中心
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>中国/天津市/* -&gt; 天津市转运中心
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a>中国/北京市/海淀区/* -&gt; 海淀区转运中心
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>* -&gt; 中国转运中心
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>中国/天津市/* -&gt; 天津市转运中心
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>中国/北京市/海淀区/* -&gt; 海淀区转运中心
+</code></pre></div>
 <p>转运快递的时候，只要在表里寻找最精确的匹配，就可以找到转运的下一个中心。</p>
 <div class="admonition tip">
 <p class="admonition-title">CIDR 表示方法</p>
