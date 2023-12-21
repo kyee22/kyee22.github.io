@@ -1,0 +1,2453 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="arren kuang">
+      
+      
+      
+        <link rel="prev" href="../../CPU%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>MIPS微系统设计文档 - Astro Arren kyee22</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-69YPS2LP7R"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-69YPS2LP7R",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-69YPS2LP7R",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="red">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mips" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Astro Arren kyee22" class="md-header__button md-logo" aria-label="Astro Arren kyee22" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8m1-7v3h2l-3 3-3-3h2v-3m-6 0h3v2l3-3-3-3v2H5m6 0V8H9l3-3 3 3h-2v3m6 0h-3V9l-3 3 3 3v-2h3"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Astro Arren kyee22
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MIPS微系统设计文档
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="red"  aria-label="切换到夜晚模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到夜晚模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="red"  aria-label="切换到白天模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="切换到白天模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/thu-cs-lab/Router-Lab-Docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    thu-cs-lab/Router-Lab-Docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../About/" class="md-tabs__link">
+        
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../dm-hw5/" class="md-tabs__link">
+          
+  
+  Temp
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-tabs__link">
+          
+  
+  工科大学物理(2)
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1A/%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="md-tabs__link">
+          
+  
+  概率统计A
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../P0_RECOMMEND/" class="md-tabs__link">
+          
+  
+  计算机组成
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Astro Arren kyee22" class="md-nav__button md-logo" aria-label="Astro Arren kyee22" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8m1-7v3h2l-3 3-3-3h2v-3m-6 0h3v2l3-3-3-3v2H5m6 0V8H9l3-3 3 3h-2v3m6 0h-3V9l-3 3 3 3v-2h3"/></svg>
+
+    </a>
+    Astro Arren kyee22
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/thu-cs-lab/Router-Lab-Docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    thu-cs-lab/Router-Lab-Docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    关于
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Temp
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Temp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dm-hw5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dm hw5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%EF%BC%88%E7%90%86%E8%AE%BA%EF%BC%89%E4%BD%9C%E4%B8%9A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算机组成（理论）作业4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    工科大学物理(2)
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            工科大学物理(2)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E4%BB%8B%E7%BB%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    介绍
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    量子力学
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            量子力学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%C2%A72%20%E5%85%89%E7%94%B5%E6%95%88%E5%BA%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §2 光电效应
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%C2%A73%20%E5%BA%B7%E6%99%AE%E9%A1%BF%E6%95%A3%E5%B0%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §3 康普顿散射
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%C2%A74%20%E6%B0%A2%E5%8E%9F%E5%AD%90%E5%85%89%E8%B0%B1%20%E7%8E%BB%E5%B0%94%E7%9A%84%E6%B0%A2%E5%8E%9F%E5%AD%90%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    §4 氢原子光谱 玻尔的氢原子理论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    概率统计A
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            概率统计A
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1A/%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概率模型
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    计算机组成
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    P0
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            P0
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../P0_RECOMMEND/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    P0_RECOMMEND
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    P1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            P1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verilog%20function%E5%87%BD%E6%95%B0%E7%94%A8%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    附1：verilog function函数用法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../P1_RECOMMEND/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    P1_RECOMMEND
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    P2
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            P2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../P2%E8%AF%BE%E4%B8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    P2课下
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    P4
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            P4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPU%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CPU设计文档
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    p7
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            p7
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    MIPS微系统设计文档
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    MIPS微系统设计文档
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-0" class="md-nav__link">
+    Part 0. 任务清单
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 0. 任务清单">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    A. 内部：异常处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    B. 外部：外设交互
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-a" class="md-nav__link">
+    Part 1. 设计思路A—内部的异常处理
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1. 设计思路A—内部的异常处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    增加指令
+  </a>
+  
+    <nav class="md-nav" aria-label="增加指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cp0" class="md-nav__link">
+    CP0寄存器的冒险
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eret" class="md-nav__link">
+    eret指令的清空延迟槽
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    内部异常检测与流水
+  </a>
+  
+    <nav class="md-nav" aria-label="内部异常检测与流水">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    F级指令异常检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    D级指令异常检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    E级指令异常检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    M级指令异常检测
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    单周期CPU的封装
+  </a>
+  
+    <nav class="md-nav" aria-label="单周期CPU的封装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rstreqstall" class="md-nav__link">
+    rst、Req和Stall的优先级
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp0_1" class="md-nav__link">
+    协处理器CP0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    异常处理程序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-b" class="md-nav__link">
+    Part 2. 设计思路B—外部的外设交互
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2. 设计思路B—外部的外设交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bridge" class="md-nav__link">
+    系统桥Bridge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timer" class="md-nav__link">
+    计时器Timer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interruptgenerator" class="md-nav__link">
+    中断发生器InterruptGenerator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3" class="md-nav__link">
+    Part 3. 测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4" class="md-nav__link">
+    Part 4. 思考题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5" class="md-nav__link">
+    Part 5. 注意事项
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../P7-Attachment.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#part-0" class="md-nav__link">
+    Part 0. 任务清单
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 0. 任务清单">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    A. 内部：异常处理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    B. 外部：外设交互
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-a" class="md-nav__link">
+    Part 1. 设计思路A—内部的异常处理
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1. 设计思路A—内部的异常处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    增加指令
+  </a>
+  
+    <nav class="md-nav" aria-label="增加指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cp0" class="md-nav__link">
+    CP0寄存器的冒险
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eret" class="md-nav__link">
+    eret指令的清空延迟槽
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    内部异常检测与流水
+  </a>
+  
+    <nav class="md-nav" aria-label="内部异常检测与流水">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#f" class="md-nav__link">
+    F级指令异常检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    D级指令异常检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e" class="md-nav__link">
+    E级指令异常检测
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m" class="md-nav__link">
+    M级指令异常检测
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    单周期CPU的封装
+  </a>
+  
+    <nav class="md-nav" aria-label="单周期CPU的封装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rstreqstall" class="md-nav__link">
+    rst、Req和Stall的优先级
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp0_1" class="md-nav__link">
+    协处理器CP0
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    异常处理程序
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-b" class="md-nav__link">
+    Part 2. 设计思路B—外部的外设交互
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2. 设计思路B—外部的外设交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bridge" class="md-nav__link">
+    系统桥Bridge
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timer" class="md-nav__link">
+    计时器Timer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interruptgenerator" class="md-nav__link">
+    中断发生器InterruptGenerator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3" class="md-nav__link">
+    Part 3. 测试
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4" class="md-nav__link">
+    Part 4. 思考题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5" class="md-nav__link">
+    Part 5. 注意事项
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+  
+  
+
+
+<h1 id="mips">MIPS微系统设计文档<a class="headerlink" href="#mips" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">P7</p>
+<p><img alt="📅" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f4c5.svg" title=":date:" /> <font color=DodgerBlue>2023年《计算机组成》（实验）P7 MIPS微系统设计文档</font></p>
+<p><img alt="😺" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f63a.svg" title=":smiley_cat:" /> <font color=orange>author: 2237XXXX</font></p>
+<p><img alt="🌸" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f338.svg" title=":cherry_blossom:" /> <font color=DeepPink>预祝计组实验完结撒花（完结失败，开启二周目……</font></p>
+</div>
+<p>Content：</p>
+<ul>
+<li>Part 0. 任务清单</li>
+<li>Part 1. 设计思路A—内部的异常处理</li>
+<li>Part 2. 设计思路B—外部的外设交互</li>
+<li>Part 3. 测试</li>
+<li>Part 4. 思考题</li>
+<li>Part 5. 注意事项</li>
+</ul>
+<p>Attachment：</p>
+<ul>
+<li>附1： P7数据通路草图</li>
+<li>附2： P7打表分析</li>
+<li>附3： Verilog函数用法</li>
+</ul>
+<h2 id="part-0">Part 0. 任务清单<a class="headerlink" href="#part-0" title="Permanent link">&para;</a></h2>
+<p>P7 与之前的 project 相比，涉及的内容较多，所以在实现的时候很容易手忙脚乱，这里列出完成 P7 需要的事宜：</p>
+<h3 id="a">A. 内部：异常处理<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>协处理器CP0：</strong> 设置 CPU 的异常处理功能，反馈 CPU 的异常信息，需要按规格自行实现。</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>内部异常检测与流水：</strong> CPU 需要具有可以检测内部指令执行错误的能力。</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>异常处理指令：</strong> 在异常处理程序中，会有一些特殊的指令需要实现。</p>
+<blockquote>
+<ul>
+<li>注意mtc0，mfc0之间的阻塞问题</li>
+<li>eret要清空延迟槽</li>
+</ul>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>单周期CPU的封装：</strong>  让 CPU 从外部看上去是一个单周期 CPU。</p>
+<blockquote>
+<ul>
+<li>优先级的问题（BD、F_PC、宏观PC的空泡问题，参考 <a href="https://roife.github.io/posts/buaa-co-lab-p7/">ROIFE的博客</a>）</li>
+</ul>
+<blockquote>
+<p>我们会遇到一个问题：在阻塞时我们会往流水线中插入 nop，这个 nop 的 <code>pc</code> 和 <code>bd</code> 信号都是 <code>0</code>。此时宏观 PC 会显示错误的值。并且如果此时发生了中断，就会导致 EPC 存入错误的值。</p>
+</blockquote>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>异常处理程序：</strong> 利用 MARS 编写简单的异常处理程序用于测试。</p>
+</li>
+</ul>
+<h3 id="b">B. 外部：外设交互<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>计时器：</strong> 课程组提供实现代码，只需要结合代码和文档理解应用即可。</p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>系统桥：</strong> 为 CPU 提供统一的访问外设的接口，需要按规格自行实现。</p>
+<blockquote>
+<ul>
+<li>与DM、Timer1、Timer2、InterruptGenerator实现交互</li>
+</ul>
+</blockquote>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>外部中断响应：</strong> CPU 需要具有初步响应外部中断信号的能力。</p>
+</li>
+</ul>
+<p><img alt="structure" src="../../img/cop7/structure.svg" /></p>
+<p><center>图1：架构图</center></p>
+<h2 id="part-1-a">Part 1. 设计思路A—内部的异常处理<a class="headerlink" href="#part-1-a" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>高小鹏：“<strong>设计</strong> 与 <strong>实现</strong> 必须分离，否则实现细节会严重干扰设计过程。”</p>
+<p>刘旭东：<strong>原理</strong> 和 <strong>工艺</strong> （即工程化方法）是两码事。如果不懂原理，只follow工程化方法，那bug出现将无从排查。</p>
+</blockquote>
+<h3 id="_1">增加指令<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>增加的4条指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mfc0, mtc0, eret, syscall
+</code></pre></div>
+<p>对应的RTL描述：</p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>RTL描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mfc0</code></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\rm R[rt] \leftarrow CP0[rd]</span><script type="math/tex">\rm R[rt] \leftarrow CP0[rd]</script></span></td>
+</tr>
+<tr>
+<td><code>mtc0</code></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\rm CP0[rd]\leftarrow R[rt]</span><script type="math/tex">\rm CP0[rd]\leftarrow R[rt]</script></span></td>
+</tr>
+<tr>
+<td><code>eret</code></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\rm PC\leftarrow CP0[epc]</span><script type="math/tex">\rm PC\leftarrow CP0[epc]</script></span></td>
+</tr>
+<tr>
+<td><code>syscall</code></td>
+<td><span class="arithmatex"><span class="MathJax_Preview">\rm syscall</span><script type="math/tex">\rm syscall</script></span></td>
+</tr>
+</tbody>
+</table>
+<p>主控制信号与冒险控制信号：</p>
+<p><img alt="image-20231125161503720" src="../../img/cop7/truthtable.png" /></p>
+<p><center>图2：异常类指令主控制信号和冒险控制信号分析</center></p>
+<h4 id="cp0">CP0寄存器的冒险<a class="headerlink" href="#cp0" title="Permanent link">&para;</a></h4>
+<p>其中，CP0寄存器处于流水线中也 <strong>可能存在冒险</strong>。例如：当D级为 <code>eret</code> 时，需要使用CP0[epc]；但是如果 <code>mtc0</code> 在E级、M级，尚未完成CP0的写入，于是产生了冒险！</p>
+<p>解决方法：直接强制暂停</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">E_CP0_Write</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">M_CP0_Write</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="p">......</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">assign</span><span class="w"> </span><span class="n">Stall</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>这里写成</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">E_CP0_Write</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">M_CP0_Write</span><span class="p">);</span>
+</code></pre></div>
+<p>会不会更好呢？</p>
+<p>或者形成</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">                        </span><span class="p">(</span><span class="w"> </span><span class="p">((</span><span class="n">E_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">E_A3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">                          </span><span class="p">((</span><span class="n">M_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">M_A3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+<p>会不会还更好呢？</p>
+<p><em>（upd）</em> 上面这个错了（喜提P7第一次课上测试唯一bug），判定地址应该是 <strong>Rd</strong> 而不是 <strong>A3</strong> ！</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">                        </span><span class="p">(</span><span class="w"> </span><span class="p">((</span><span class="n">E_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">E_Rd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">                          </span><span class="p">((</span><span class="n">M_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">M_Rd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+</blockquote>
+<h4 id="eret">eret指令的清空延迟槽<a class="headerlink" href="#eret" title="Permanent link">&para;</a></h4>
+<p>清空延迟槽的通用方法：</p>
+<ul>
+<li>
+<p><strong>插入空泡</strong>（我在P5课上就是这么实现的）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">F_Instr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Clear_Slot</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">32</span><span class="mi">&#39;d0</span><span class="o">:</span><span class="w"> </span><span class="n">i_inst_rdata</span><span class="p">;</span><span class="w">   </span><span class="c1">//  &lt;~~~~ come into cpu</span>
+</code></pre></div>
+</li>
+<li>
+<p><strong>直接清空：</strong> 将PC寄存器的出口处F_PC修正为NPC，入口处NPC修正为NPC+4。形象地讲，就好像把PC处的延迟槽指令（的地址）给强行 <strong>"短路"</strong> 了，如下图所示。</p>
+</li>
+</ul>
+<p><img alt="清空延迟槽.drawio" src="../../img/cop7/%E6%B8%85%E7%A9%BA%E5%BB%B6%E8%BF%9F%E6%A7%BD.drawio.svg" /></p>
+<p><center>图3：强行“短路”清空延迟槽</center></p>
+<ul>
+<li>其他方法……</li>
+</ul>
+<p>由于“插入空泡”的方法可能带来宏观PC的问题（本来Stall就会产生空泡，它的解决本来就很烦了，为了避免麻烦，就不要增加空泡的产生来源了），故采用“强制进入”的方式</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// 清空延迟槽?</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">wire</span><span class="w"> </span><span class="n">skip_slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D_eret</span><span class="p">;</span><span class="w"> </span><span class="c1">//哪些指令清空延迟槽?</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_NPC</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">skip_slot</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="n">D_NPC_plus_4</span><span class="w">  </span><span class="o">:</span><span class="w">   </span><span class="n">D_NPC</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_F_PC</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">skip_slot</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="n">D_NPC</span><span class="w">         </span><span class="o">:</span><span class="w">   </span><span class="n">F_PC</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">assign</span><span class="w"> </span><span class="n">i_inst_addr</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">Fixed_F_PC</span><span class="p">;</span><span class="w">   </span><span class="c1">//  ~~~~~~&gt; go out of cpu</span>
+</code></pre></div>
+<p><font color=red>注意：既然清空了延迟槽，就不应该给下一条指令BD标记</font>，所以 <code>eret</code> 指令在D级时 <strong>不应</strong> 为F级的指令标记BD！</p>
+<h3 id="_2">内部异常检测与流水<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="f">F级指令异常检测<a class="headerlink" href="#f" title="Permanent link">&para;</a></h4>
+<p>需要检测的指令：</p>
+<blockquote>
+<p>为什么要明确需要检测的指令？</p>
+<p>比如，若不需要使用ALU进行加减法运算的指令，使得ALU加减法产生异常，那么我们**不**应该记录这个异常</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>AdEL:   所有指令
+</code></pre></div>
+<p>异常检测：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">F_Exc_AdEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="o">|</span><span class="n">F_PC</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">])</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">F_PC</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">F_PC</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_6ffc</span><span class="p">));</span>
+</code></pre></div>
+<blockquote>
+<p>上面这个错了，<code>F_PC</code> 应该是<code>Fixed_F_PC</code></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">F_Exc_AdEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">((</span><span class="o">|</span><span class="n">Fixed_F_PC</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">])</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">Fixed_F_PC</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="n">Fixed_F_PC</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_6ffc</span><span class="p">));</span>
+</code></pre></div>
+<p>检测到了之后的处理：视作nop指令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">F_Instr</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">F_Exc_AdEL</span><span class="p">)</span><span class="w">  </span><span class="o">?</span><span class="w"> </span><span class="mh">32</span><span class="mi">&#39;d0</span><span class="w">     </span><span class="o">:</span><span class="w">   </span><span class="n">i_inst_rdata</span><span class="p">;</span><span class="w">   </span><span class="c1">//  &lt;~~~~~~ come into cpu</span>
+</code></pre></div>
+<h4 id="d">D级指令异常检测<a class="headerlink" href="#d" title="Permanent link">&para;</a></h4>
+<p>需要检测的指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>RI:         所有指令
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Syscall:    syscall
+</code></pre></div>
+<p>异常检测：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// Ctrl 模块</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">D_syscall</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_syscall_</span><span class="p">;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">D_Exc_RI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">_mfc0_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_mtc0_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_eret_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_syscall_</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">                         </span><span class="n">_nop_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">                         </span><span class="n">_add_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_or_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_and_</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="n">_slt_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_sltu_</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">                         </span><span class="n">_mult_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_multu_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_div_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_divu_</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">_mfhi_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_mflo_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_mthi_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_mtlo_</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">                         </span><span class="n">_jr_</span><span class="w">   </span><span class="o">|</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">                         </span><span class="n">_ori_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_lui_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_addi_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_andi_</span><span class="w">    </span><span class="o">|</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">                         </span><span class="n">_beq_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_bne_</span><span class="w">   </span><span class="o">|</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">                         </span><span class="n">_lw_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_lh_</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">_lb_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_sw_</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">_sh_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_sb_</span><span class="w">   </span><span class="o">|</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">                         </span><span class="n">_jal_</span><span class="w">  </span><span class="p">));</span>
+</code></pre></div>
+<p>检测到了之后的处理：视作nop指令</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_D_Instr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_Exc_RI</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">32</span><span class="mi">&#39;d0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">D_Intsr</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="e">E级指令异常检测<a class="headerlink" href="#e" title="Permanent link">&para;</a></h4>
+<p>需要检测的指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Ov:     add, addi, sub
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>AdEL:   lw,lh,lb    //为M级检测准备
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>AdES:   sw,sh,sb    //为M级检测准备
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">// E_Ctrl</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">E_need_check_Ov_cal</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">_addi_</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">E_need_check_Ov_visit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_lw_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_lh_</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">_lb_</span><span class="w">  </span><span class="o">|</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">                                   </span><span class="n">_sw_</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">_sh_</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">_sb_</span><span class="p">;</span>
+</code></pre></div>
+<p>异常检测：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kt">reg</span><span class="w"> </span><span class="p">[</span><span class="mh">32</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">temp1</span><span class="p">,</span><span class="n">temp2</span><span class="p">;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">assign</span><span class="w"> </span><span class="n">E_Exc_Ov</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">E_need_check_Ov_cal</span><span class="p">)</span><span class="w">     </span><span class="o">&amp;</span><span class="w">   </span><span class="p">((</span><span class="n">ALUOp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">temp1</span><span class="p">[</span><span class="mh">32</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">temp1</span><span class="p">[</span><span class="mh">31</span><span class="p">]))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">ALUOp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">temp2</span><span class="p">[</span><span class="mh">32</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">temp2</span><span class="p">[</span><span class="mh">31</span><span class="p">]));</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">assign</span><span class="w"> </span><span class="n">E_DM_Ov</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">E_need_check_Ov_visit</span><span class="p">)</span><span class="w">   </span><span class="o">&amp;</span><span class="w">   </span><span class="p">(</span><span class="n">ALUOp</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">temp1</span><span class="p">[</span><span class="mh">32</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">temp1</span><span class="p">[</span><span class="mh">31</span><span class="p">]);</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">    </span><span class="n">temp1</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">A</span><span class="p">[</span><span class="mh">31</span><span class="p">],</span><span class="w"> </span><span class="n">A</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">{</span><span class="n">B</span><span class="p">[</span><span class="mh">31</span><span class="p">],</span><span class="w"> </span><span class="n">B</span><span class="p">};</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">    </span><span class="n">temp2</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">A</span><span class="p">[</span><span class="mh">31</span><span class="p">],</span><span class="w"> </span><span class="n">A</span><span class="p">}</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">{</span><span class="n">B</span><span class="p">[</span><span class="mh">31</span><span class="p">],</span><span class="w"> </span><span class="n">B</span><span class="p">};</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="p">......</span>
+</code></pre></div>
+<p>检测到了之后的处理：不管</p>
+<h4 id="m">M级指令异常检测<a class="headerlink" href="#m" title="Permanent link">&para;</a></h4>
+<p>需要检测的指令：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>AdEL:   lw,lh,lb
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>AdES:   sw,sh,sb    
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">Load</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">_lw_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_lh_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_lb_</span><span class="p">;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">Store</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">_sw_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sh_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sb_</span><span class="p">;</span>
+</code></pre></div>
+<p>异常检测：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1">// BE模块</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">word_align</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="n">MemAddr</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]);</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">half_align</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">MemAddr</span><span class="p">[</span><span class="mh">0</span><span class="p">]);</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">half_to_timer</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">(</span><span class="mh">32&#39;h7f00</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">                                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">byte_to_timer</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">(</span><span class="mh">32&#39;h7f00</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">                                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">addr_overflow</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">M_DM_Ov</span><span class="p">);</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">to_count</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="w">   </span><span class="p">(</span><span class="mh">32&#39;h7f08</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span><span class="w"> </span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f18</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">addr_invalid</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Store</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h0000</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h2fff</span><span class="p">)</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f00</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f20</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f23</span><span class="p">)</span><span class="w"> </span><span class="p">));</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">M_Exc_AdES</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">word_align</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">half_align</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">half_to_timer</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">byte_to_timer</span><span class="w">  </span><span class="o">|</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a><span class="w">                          </span><span class="n">addr_overflow</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">to_count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">addr_invalid</span><span class="p">;</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a><span class="c1">// DE模块</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">word_align</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Load</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d0</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">|</span><span class="n">MemAddr</span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]);</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">half_align</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Load</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">MemAddr</span><span class="p">[</span><span class="mh">0</span><span class="p">]);</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">timer_to_half</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Load</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d1</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">(</span><span class="mh">32&#39;h7f00</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a><span class="w">                                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">timer_to_byte</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Load</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">DMSel</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">7</span><span class="mi">&#39;d2</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="p">(</span><span class="mh">32&#39;h7f00</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a><span class="w">                                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span><span class="w"> </span><span class="p">);</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">addr_overflow</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Load</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">M_DM_Ov</span><span class="p">);</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a><span class="w">    </span><span class="kt">wire</span><span class="w"> </span><span class="n">addr_invalid</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Load</span><span class="p">)</span><span class="w">  </span><span class="o">&amp;</span><span class="w">  </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h0000</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h2fff</span><span class="p">)</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f00</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f0b</span><span class="p">)</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f10</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f1b</span><span class="p">)</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a><span class="w">                                       </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mh">32&#39;h7f20</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">MemAddr</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32&#39;h7f23</span><span class="p">)</span><span class="w"> </span><span class="p">));</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a>
+<a id="__codelineno-19-31" name="__codelineno-19-31" href="#__codelineno-19-31"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">M_Exc_AdEL</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">word_align</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">half_align</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">timer_to_half</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">timer_to_byte</span><span class="w">  </span><span class="o">|</span>
+<a id="__codelineno-19-32" name="__codelineno-19-32" href="#__codelineno-19-32"></a><span class="w">                          </span><span class="n">addr_overflow</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">addr_invalid</span><span class="p">;</span>
+</code></pre></div>
+<p>检测到了之后的处理：</p>
+<ul>
+<li>
+<p>Store类：</p>
+<blockquote>
+<p>注意：这里异常指令已经进入了M级，Req那么可能来不及阻止Store类指令篡改外设</p>
+</blockquote>
+<p>所以，要想办法解决。可以是“冻结”BE模块的使能信号</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">BE</span><span class="w"> </span><span class="n">BE</span><span class="p">(</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span><span class="p">......</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="p">.</span><span class="n">MemWrite</span><span class="p">(</span><span class="n">M_MemWrite</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Req</span><span class="p">)),</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span><span class="p">......</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Load类：</p>
+<p>向W级流水寄存器 <strong>也</strong> 发出Req信号（和CP0级之前的流水级一样地，即和D级、E级、M级流水寄存器一样处理），防止load出来的数据篡改通用寄存器</p>
+</li>
+</ul>
+<h3 id="cpu">单周期CPU的封装<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
+<h4 id="rstreqstall">rst、Req和Stall的优先级<a class="headerlink" href="#rstreqstall" title="Permanent link">&para;</a></h4>
+<p>优先级问题的具体分析可参照<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-4/">教程</a>、<a href="https://roife.github.io/posts/buaa-co-lab-p7/">ROIFE的博客</a>、<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-7/">思考题5</a>来进行理解。</p>
+<p>结论就是：</p>
+<ul>
+<li>
+<p>Stall产生空泡时，要让PC和BD继续流水，防止中断。</p>
+<p>否则：<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-4/">见教程</a></p>
+</li>
+<li>
+<p>Req清空流水寄存器时，要让PC置为 <code>32'h0000_4180</code>（而非 <code>32'h0000_3000</code>），防止中断。</p>
+<p>否则：从外面看，暴露出去的宏观PC会产生**突变**（比如，<code>32'h0000_34fc</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_3000</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_4180</code>）</p>
+</li>
+</ul>
+<p>D级：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Req</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">            </span><span class="n">D_PC</span><span class="w">        </span><span class="o">&lt;=</span><span class="w">  </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="w"> </span><span class="o">:</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">                            </span><span class="p">(</span><span class="n">Req</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_4180</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="p">;</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">            </span><span class="n">D_Intsr</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">            </span><span class="n">D_BD</span><span class="w">        </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">            </span><span class="n">D_ExcCode</span><span class="w">   </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">Stall</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">            </span><span class="p">......</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="w">    </span><span class="p">......</span>
+</code></pre></div>
+<p>E级：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Stall</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Req</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">            </span><span class="n">E_Instr</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">            </span><span class="n">E_BD</span><span class="w">        </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="mh">0</span><span class="w"> </span><span class="o">:</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">                           </span><span class="p">(</span><span class="n">Req</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="mh">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">                           </span><span class="p">(</span><span class="n">Stall</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">D_BD</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="w">            </span><span class="p">......</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="w">            </span><span class="n">E_PC</span><span class="w">        </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="w"> </span><span class="o">:</span><span class="w"> </span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="w">                           </span><span class="p">(</span><span class="n">Req</span><span class="p">)</span><span class="w">    </span><span class="o">?</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_4180</span><span class="w"> </span><span class="o">:</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="w">                           </span><span class="p">(</span><span class="n">Stall</span><span class="p">)</span><span class="w">  </span><span class="o">?</span><span class="w"> </span><span class="n">D_PC</span><span class="w">  </span><span class="o">:</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="p">;</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="w">            </span><span class="p">......</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="w">        </span><span class="p">......</span>
+</code></pre></div>
+<p>M级：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Req</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">            </span><span class="n">M_Instr</span><span class="w">         </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">            </span><span class="n">M_PC</span><span class="w">            </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="w"> </span><span class="o">:</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">                               </span><span class="p">(</span><span class="n">Req</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_4180</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mh">32&#39;h0000</span><span class="n">_3000</span><span class="p">;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">            </span><span class="p">......</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="w">        </span><span class="p">......</span>
+</code></pre></div>
+<h3 id="cp0_1">协处理器CP0<a class="headerlink" href="#cp0_1" title="Permanent link">&para;</a></h3>
+<p>按照教程的规格设计即可。</p>
+<p><strong>万分小心</strong>，在CP0不断被Verilog的特性被刺。</p>
+<p>注意几点：</p>
+<ul>
+<li>
+<p>谁提供 <code>en</code>？</p>
+<p><code>mtc0</code>，准确来说是M级的<code>mtc0</code></p>
+</li>
+<li>
+<p>谁提供 <code>EXLClr</code>？</p>
+<p><code>eret</code>，准确来说是M级的<code>eret</code></p>
+</li>
+</ul>
+<h3 id="_3">异常处理程序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>略。</p>
+<p>课下测试时，就是简单的取出CP0[12] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 取出CP0[14] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> EPC+4 <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 写回CP0[14] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 跳回</p>
+<h2 id="part-2-b">Part 2. 设计思路B—外部的外设交互<a class="headerlink" href="#part-2-b" title="Permanent link">&para;</a></h2>
+<h3 id="bridge">系统桥Bridge<a class="headerlink" href="#bridge" title="Permanent link">&para;</a></h3>
+<p>据 <em>L15-支持IO（高小鹏）</em>，Bridge应具有的功能有：</p>
+<ul>
+<li>
+<p>输出地址</p>
+</li>
+<li>
+<p>地址匹配：根据地址为每个设备产生一个译码信号（hit，即是否命中）</p>
+<blockquote>
+<p><center>地址图</center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">条目</th>
+<th style="text-align: center;">地址或地址范围</th>
+<th style="text-align: center;">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">数据存储器</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm0x0000\_0000∼0x0000\_2FFF</span><script type="math/tex">\rm0x0000\_0000∼0x0000\_2FFF</script></span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">指令存储器</td>
+<td style="text-align: center;">$ \rm0x0000_3000∼0x0000_6FFF$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">PC 初始值</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm 0x0000\_3000</span><script type="math/tex">\rm 0x0000\_3000</script></span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">异常处理程序入口地址</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm 0x0000\_4180</span><script type="math/tex">\rm 0x0000\_4180</script></span></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">计时器 0 寄存器地址</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm 0x0000\_7F00∼0x0000\_7F0B</span><script type="math/tex">\rm 0x0000\_7F00∼0x0000\_7F0B</script></span></td>
+<td style="text-align: center;">计时器 0 的 3 个寄存器</td>
+</tr>
+<tr>
+<td style="text-align: center;">计时器 1 寄存器地址</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm 0x0000\_7F10∼0x0000\_7F1B</span><script type="math/tex">\rm 0x0000\_7F10∼0x0000\_7F1B</script></span></td>
+<td style="text-align: center;">计时器 1 的 3 个寄存器</td>
+</tr>
+<tr>
+<td style="text-align: center;">中断发生器响应地址</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm 0x0000\_7F20∼0x0000\_7F23</span><script type="math/tex">\rm 0x0000\_7F20∼0x0000\_7F23</script></span></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li>
+<p>读数据：DEV的所有数据输出 <strong>汇聚</strong> 至CPU的数据输入（<strong>MUX控制</strong>）</p>
+</li>
+<li>写数据：CPU的数据输出 <strong>派发</strong> 至DEV的所有数据输入（<strong>直通输出</strong>）</li>
+</ul>
+<p>综上，Bridge与外设的交互逻辑可用下图表示。</p>
+<p><img alt="Bridge.drawio" src="../../img/cop7/Bridge.drawio.svg" /></p>
+<p><center>图4：Bridge与外设交互逻辑</center></p>
+<h3 id="timer">计时器Timer<a class="headerlink" href="#timer" title="Permanent link">&para;</a></h3>
+<p>端口说明</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th style="text-align: center;">信号名</th>
+<th style="text-align: center;">方向</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">clk</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">时钟信号</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">reset</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">同步复位信号</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Addr[31:2]</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">地址数据</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">WE</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">写使能信号</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Din[31:0]</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">读入数据</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">Dout[31:0]</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">读出数据</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">IRQ</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">计时器中断信号</td>
+</tr>
+</tbody>
+</table>
+<p>功能定义</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">序号</th>
+<th style="text-align: center;">功能</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">定时产生中断信号</td>
+<td style="text-align: center;">通过计数模式定期产生中断信号</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">模式0</td>
+<td style="text-align: center;">计数为0时，若不复位，持续产生IRQ信号</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">模式1</td>
+<td style="text-align: center;">计数为0时，产生一周期IRQ信号后重新计数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="interruptgenerator">中断发生器InterruptGenerator<a class="headerlink" href="#interruptgenerator" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>无需自己实现</p>
+</li>
+<li>
+<p>发出中断：</p>
+<blockquote>
+<p>微系统可以通过外部端口接受外部中断信号（在计时器部分已经实现了）。（<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-2/#_3">外设的实现-中断发生器</a>）</p>
+<p>中断信号依据宏观 PC 产生，依据相应的待写入地址和字节使能信号关闭，具体实现参考下发的 tb。（<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-6/#_3">P7提交要求-硬件约束</a>）</p>
+</blockquote>
+</li>
+<li>
+<p>响应中断：</p>
+<blockquote>
+<p>微系统可以通过访问地址 <code>0x7F20</code> 的 <code>store</code> 类指令，改变对应的微系统输出信号（<code>m_int_addr</code>，<code>m_int_byteen</code>），即系统桥实现正确。（<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-2/#_4">外设的实现-系统桥</a>）</p>
+<p>测试程序只会通过指令 <code>sb $0, 0x7f20($0)</code> 访问中断发生器（响应中断），且只会在中断处理程序中访问。（<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-6/#_6">P7提交要求-官方测试说明</a>）</p>
+<p>我们的硬件只需要**忠诚地翻译指令**。</p>
+<p>是否访问 <code>0x7f20</code> 是软件程序决定的事情，而我们的硬件只用支持软件去访问 <code>0x7f20</code> 即可。</p>
+<p>……（<a href="http://cscore.buaa.edu.cn/#/discussion_area/1154/1120/posts">P7答疑帖</a>）</p>
+</blockquote>
+</li>
+<li>
+<p>读写：</p>
+<blockquote>
+<p>由于其内部并没有真正的存储单元，我们规定读出的数据始终保持 0，且写入时除了响应中断外不会产生其他影响。（<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-6/#_3">P7提交要求-硬件约束</a>）</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="part-3">Part 3. 测试<a class="headerlink" href="#part-3" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><em>（Before 2023.12.04）</em> P7不能和MARS对拍，同学间又难以协同，压力测试难以进行……</p>
+<p><em>（After 2023.12.04）</em>    <strong>挂了 <code>P7_strong_exception</code>之后，测试必须要进行了……</strong></p>
+</blockquote>
+<p><strong>测试工具：</strong></p>
+<ul>
+<li>
+<p><strong>对怕器：</strong> 由 <code>陈睿正 22371213</code> 同学完成发布在<a href="http://cscore.buaa.edu.cn/#/discussion_area/1171/1208/posts">讨论贴</a>的<a href="https://bhpan.buaa.edu.cn/link/AAFBFF8A84D9754EED902F8D0ADBA15041">对拍器</a>（人与Mars对拍）</p>
+</li>
+<li>
+<p><strong>数据生成程序：</strong> 沿用P6课下测试时，由我完成的简易Python程序（稍许修改：增加syscall指令；允许异常发生）。用户态指令集如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cal_rr  = [&#39;add&#39; ,&#39;sub&#39;, &#39;and&#39;, &#39;or&#39;, &#39;slt&#39;, &#39;sltu&#39;]
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>cal_ri  = [&#39;ori&#39;, &#39;addi&#39;, &#39;andi&#39;]
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>mul_div = [&#39;mult&#39;, &#39;multu&#39;]         //  避免div除0, 故不生成div和divu
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>mv_to   = [&#39;mthi&#39;, &#39;mtlo&#39;]      
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>mv_fr   = [&#39;mfhi&#39;, &#39;mflo&#39;]
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>lui     = [&#39;lui&#39;]
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>exc     = [&#39;syscall&#39;]
+</code></pre></div>
+</li>
+<li>
+<p><strong>coKiller：</strong> 由 <code>姜涵章 21375212</code> 等同学完成的自动评测机</p>
+</li>
+</ul>
+<p><strong>测试约束：</strong></p>
+<ul>
+<li>魔改版Mars可以实现异常的测试，但无法实现中断的测试。但由于我第一次P7课上对 <strong>function</strong>、<strong>interrupt</strong> 和 <strong>hazard</strong> 的测试都通过了，所以可以把测试范围聚焦在 <strong>异常（exception）</strong> 上</li>
+<li>因此，在“异常”这个层面，我可以实现与MARS的对拍，不用再考虑当时课下“难以协同”的问题</li>
+<li>其中，出于合法性的考虑，不能通过与MARS对拍来测试<code>RI</code></li>
+</ul>
+<p><strong>测试数据：</strong></p>
+<p><img alt="image-20231210211334824" src="../../img/cop7/filesArray.png" /></p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>strong_test.asm</code></td>
+<td>从 <span class="arithmatex"><span class="MathJax_Preview">ZGY</span><script type="math/tex">ZGY</script></span> （ <span class="arithmatex"><span class="MathJax_Preview">ZGY</span><script type="math/tex">ZGY</script></span> 又从<span class="arithmatex"><span class="MathJax_Preview">Mr.Who</span><script type="math/tex">Mr.Who</script></span>）白嫖来的数据</td>
+</tr>
+<tr>
+<td><code>his_strong_charles.asm</code></td>
+<td>从 <span class="arithmatex"><span class="MathJax_Preview">Charles2530</span><script type="math/tex">Charles2530</script></span> 的GitHub仓库白嫖来的数据<br>我对其中的 <code>lhu</code> 和 <code>j</code> 指令作了修改，对其中<code>div</code>除0的地方作了修改</td>
+</tr>
+<tr>
+<td><code>my_strong.asm</code><br><code>my_strong_2.asm</code><br><code>my_strong_3.asm</code></td>
+<td>由我编写的Python程序生成的大规模数据</td>
+</tr>
+<tr>
+<td><code>my_be_de.asm</code></td>
+<td>由我编写的针对存储类指令AdEL/AdES异常测试的数据</td>
+</tr>
+<tr>
+<td><code>strong_rhq_1.asm</code></td>
+<td>利用我在Github上发现的 <span class="arithmatex"><span class="MathJax_Preview">RHQ</span><script type="math/tex">RHQ</script></span> 助教的数据生成器生成的数据<br>我对其中的<code>addu</code>,<code>subu</code>,<code>addiu</code>指令作了修改</td>
+</tr>
+<tr>
+<td><code>his_strong_nht.asm</code></td>
+<td>从讨论区 <span class="arithmatex"><span class="MathJax_Preview">NHT</span><script type="math/tex">NHT</script></span> 白嫖来的数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part-4">Part 4. 思考题<a class="headerlink" href="#part-4" title="Permanent link">&para;</a></h2>
+<p><strong>Q1：</strong> 请查阅相关资料，说明鼠标和键盘的输入信号是如何被 CPU 知晓的？</p>
+<p><strong>A1：</strong> 鼠标和键盘产生中断信号，进入中断处理程序，在中断处理程序中，鼠标和键盘输入信号。</p>
+<hr />
+<p><strong>Q2：</strong> 请思考为什么我们的 CPU 处理中断异常必须是已经指定好的地址？如果你的 CPU 支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）</p>
+<p><strong>A2：</strong> 若自定义入口地址，则很多软件将会不兼容，在程序员视角设计软件的时候，中断处理的入口地址是不重要的，也就是说这是软件和硬件之间的协议。</p>
+<hr />
+<p><strong>Q3：</strong>  为何与外设通信需要 Bridge？</p>
+<p><strong>A3：</strong> CPU不能为每一个设备都提供一套地址/数据，否则会导致CPU设计变得复杂。</p>
+<hr />
+<p><strong>Q4：</strong> 请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。</p>
+<p><strong>A4：</strong> </p>
+<ul>
+<li>相同：在允许计数的情况下，都是从初值寄存器中获取初数值到计数值寄存器中开始计数；两种模式都受控制寄存器的控制</li>
+<li>不同：模式0在计数结束后，会一直提供中断信号，直到IM或者EN被修改使其禁止中断或停止计数，模式1在计数结束后，只会提供一周期的中断信号，然后自动再次赋初值开始计数，知道IM或者EN被修改行为才会被改变。</li>
+</ul>
+<p><img alt="TimeFSM.drawio" src="../../img/cop7/TimeFSM.drawio.svg" /></p>
+<p><center>Timer FSM (in Moore Type)</center></p>
+<hr />
+<p><strong>Q5：</strong> 倘若中断信号流入的时候，在检测宏观 PC 的一级如果是一条空泡（你的 CPU 该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在 P7 中，清空流水线产生的空泡指令应该保留原指令的哪些信息？</p>
+<p><strong>A5：</strong> </p>
+<ul>
+<li>
+<p>Stall产生空泡时，要让PC和BD继续流水，防止中断。</p>
+<p>否则：<a href="http://cscore.buaa.edu.cn/tutorial/P7/implement/P7-2-4/">见教程</a></p>
+</li>
+<li>
+<p>Req清空流水寄存器时，要让PC置为 <code>32'h0000_4180</code>（而非 <code>32'h0000_3000</code>），防止中断。</p>
+<p>否则：从外面看，暴露出去的宏观PC会产生 <strong>突变</strong>（比如，<code>32'h0000_34fc</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_3000</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_4180</code>）</p>
+</li>
+</ul>
+<hr />
+<p><strong>Q6：</strong> 为什么 <code>jalr</code> 指令为什么不能写成 <code>jalr $31, $31</code>？</p>
+<p><strong>A6：</strong> </p>
+<ul>
+<li>这种操作具有二义性，不知道先跳转还是先链接</li>
+<li>指令集要求。寄存器说明 rs 和 rd 不得相等，因为此类指令在重新执行时不具有相同的效果。执行此类指令的结果是不可预测的。此限制允许异常处理程序在分支延迟槽中发生异常时通过重新执行分支来恢复执行。</li>
+</ul>
+<h2 id="part-5">Part 5. 注意事项<a class="headerlink" href="#part-5" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><em>（P7 二周目 upd）</em></p>
+</blockquote>
+<ul>
+<li><strong>课上添加新指令的步骤</strong><ul>
+<li>译码（主Ctrl，E_Ctrl，M_Ctrl都要译），并且识别 <span class="arithmatex"><span class="MathJax_Preview">\rm RI</span><script type="math/tex">\rm RI</script></span> 异常时要排除新指令</li>
+<li>主控制信号</li>
+<li>通用寄存器的冒险</li>
+<li>CP0寄存器的冒险</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><em>（P7 upd）</em></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Fix了的信号，传递/使用时要用fix了之后的信号</strong></p>
+<ul>
+<li><code>F_PC</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span><code>Fixed_F_PC</code></li>
+<li><code>D_NPC</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span><code>Fixed_NPC</code></li>
+<li><code>D_Instr</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span><code>Fixed_D_Instr</code></li>
+<li><code>D_Instr</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span><code>Fixed_D_Instr</code></li>
+<li><code>MemWD</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span><code>FixedMemWD</code></li>
+<li><code>MemRD</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span><code>FixedMemRD</code></li>
+</ul>
+<p>这里和P3的教训有异曲同工之妙。都是在通路中 <strong>插入</strong> 一段修改，往往只注意往前看， <strong>接上</strong> 上游的出口，而忽略往后看， 旧的此处可能 <strong>接着</strong> 多个出口</p>
+<p>本来是插入修改来修改bug的，但反而新增意想不到的bug（这就是用代码去描述电路的烦人之处了……</p>
+<p><img alt="插入修改.drawio" src="../../img/cop7/%E6%8F%92%E5%85%A5%E4%BF%AE%E6%94%B9.drawio.svg" /></p>
+<blockquote>
+<p><strong>P3课上T3的教训</strong></p>
+<ul>
+<li>当顶层模块新增MUX时，其上下游的信号含义可能发生变化（使用Tunnel尤其不容易看出来），因此要注意其上下游数据通路的改变</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p><strong>wire/reg一个新变量时，要声明位宽！！！</strong></p>
+<ul>
+<li>这P7信号一多起来，就没想到自己在位宽方面出问题……</li>
+<li>因为P7容易手忙脚乱，总是像写编程语言一样直接 <code>wire xxx = xxxxx</code>出一个新变量，从而忽略了位宽</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><em>（P6 upd）</em> P6课下总结的：</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>注意ISE工程下的文件选择</strong></p>
+<ul>
+<li>不定态它又来了又来了又来了……</li>
+</ul>
+</li>
+<li>
+<p><strong>注意Signedness！！！注意Signedness！！！注意Signedness！！！</strong></p>
+<blockquote>
+<p>P6 的计算一般是和乘除部件有关，但是其实也不难，这里建议课下做一下 <code>madd</code>、<code>maddu</code>、<code>msub</code>、<code>msubu</code>。</p>
+<p>一个坑点在于 <code>madd</code>（或者 <code>msub</code>）里面。如果你的写法是</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="p">{</span><span class="n">temp_hi</span><span class="p">,</span><span class="w"> </span><span class="n">temp_lo</span><span class="p">}</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">{</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">rt</span><span class="p">);</span>
+</code></pre></div>
+<p>好像就会出锅，这个具体的原因在 P1 里面讲过了，和 signedness 有关。另外，如果你写的是</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">{</span><span class="n">temp_hi</span><span class="p">,</span><span class="w"> </span><span class="n">temp_lo</span><span class="p">}</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">{</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">$signed</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">rt</span><span class="p">));</span>
+</code></pre></div>
+<p>也不对，具体也是 P1 里面有讲。正确的写法是：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span><span class="n">temp_hi</span><span class="p">,</span><span class="w"> </span><span class="n">temp_lo</span><span class="p">}</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">{</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">$signed</span><span class="p">(</span><span class="mh">64</span><span class="mi">&#39;d0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">$signed</span><span class="p">(</span><span class="n">rt</span><span class="p">));</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="c1">// 或者</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="p">{</span><span class="n">temp_hi</span><span class="p">,</span><span class="w"> </span><span class="n">temp_lo</span><span class="p">}</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">{</span><span class="n">hi</span><span class="p">,</span><span class="w"> </span><span class="n">lo</span><span class="p">}</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">$signed</span><span class="p">({{</span><span class="mh">32</span><span class="p">{</span><span class="n">rs</span><span class="p">[</span><span class="mh">31</span><span class="p">]}},</span><span class="w"> </span><span class="n">rs</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]}</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">$signed</span><span class="p">({{</span><span class="mh">32</span><span class="p">{</span><span class="n">rt</span><span class="p">[</span><span class="mh">31</span><span class="p">]}},</span><span class="w"> </span><span class="n">rt</span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]}));</span><span class="w"> </span><span class="c1">// 手动进行符号位扩展</span>
+</code></pre></div>
+<p>总之一句话：小心 <code>$signed()</code>。</p>
+<p>​   <strong>——ROIFE BLOG（<a href="https://roife.github.io/posts/buaa-co-lab-p6/">博客链接</a>）</strong></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><em>（P5 upd）</em> P5课下总结的：</p>
+</blockquote>
+<ul>
+<li><strong>使用function减少Ctrl C+V</strong><ul>
+<li>平时function用的少，但是很好用。P4课上gray那题忘了function怎么写真是血亏</li>
+<li>附在设计文档后面~</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><em>（P4 upd）</em> P4课下总结的：</p>
+</blockquote>
+<p>在debug时，发现一些Veriolog的特性造成的让人抓狂的问题：</p>
+<ul>
+<li>
+<p><strong>在对一个多位宽信号赋值时，如果只对某些bit赋值，可能产生意想不到的后果</strong></p>
+<ul>
+<li>
+<p>我的控制基本信号基本都是8位，在对低0-1位赋值时，其他位竟然呈现高阻态！</p>
+<ul>
+<li>
+<p>错误写法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
+</code></pre></div>
+<p>这样写的话RegDst[7:2]都是z（高阻态）</p>
+</li>
+<li>
+<p>正确写法：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="mb">&#39;b0</span><span class="p">;</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_jal_</span><span class="p">;</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="k">assign</span><span class="w"> </span><span class="n">RegDst</span><span class="p">[</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_add_</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_sub_</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>注意Verilog运算符的优先级！</strong></p>
+<ul>
+<li>
+<p>比如P1课上的T1，就因为没注意到 <code>&amp;</code> 和 <code>+</code> 的优先级，而找bug找了半小时！</p>
+</li>
+<li>
+<p>再比如这次的P4：</p>
+<p>错误写法：<code>NPC = (is_eq == 1) ? PC + 4 + extend_Imm &lt;&lt; 2 : PC + 4</code></p>
+<p>正确写法：<code>NPC = (is_eq == 1) ? PC + 4 + (extend_Imm &lt;&lt; 2) : PC + 4</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>P3课上T3的教训</strong></p>
+<ul>
+<li>当顶层模块新增MUX时，其上下游的信号含义可能发生变化（使用Tunnel尤其不容易看出来），因此要注意其上下游数据通路的改变</li>
+</ul>
+</li>
+</ul>
+<p><center>·  终章  ·  End  ·</center></p>
+<p><img alt="img" src="../../img/cop7/end" /></p>
+<p><center>再会（这次是真的再会了！）</center></p>
+<p>再见了所有的Computer Organization</p>
+<p>The journey starting from 2023 Summer comes to an end on 2023.12.11</p>
+
+
+  
+
+
+
+
+                
+
+  
+
+  <h3 id="__comments">评论</h2>
+  <script src="https://giscus.app/client.js"
+        data-repo="thu-cs-lab/Router-Lab-Docs"
+        data-repo-id="MDEwOlJlcG9zaXRvcnkyNjA0MDI4MDU="
+        data-category="Discussions"
+        data-category-id="DIC_kwDOD4Vudc4CPmQ9"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>
