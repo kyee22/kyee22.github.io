@@ -322,6 +322,24 @@
   
 
       
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/" class="md-tabs__link">
+          
+  
+  蓝桥杯
+
+        </a>
+      </li>
+    
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -1355,6 +1373,72 @@
   
 
     
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    蓝桥杯
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            蓝桥杯
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%93%9D%E6%A1%A5%E6%9D%AF/%E6%8A%98%E5%8D%8A%E6%90%9C%E7%B4%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    折半搜索
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1620,7 +1704,7 @@
 <li>附3： Verilog函数用法</li>
 </ul>
 <h2 id="part-0">Part 0. 任务清单<a class="headerlink" href="#part-0" title="Permanent link">&para;</a></h2>
-<p>P7 与之前的 project 相比，涉及的内容较多，所以在实现的时候很容易手忙脚乱，这里列出完成 P7 需要的事宜：</p>
+<p>P7 与之前的 project 相比，涉及的内容较多，所以在实现的时候很容易手忙脚乱，这里列出完成 P7 需要的事宜：（第一遍看教程时记下的粗略要点）</p>
 <h3 id="a">A. 内部：异常处理<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item">
@@ -1723,13 +1807,13 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">E_CP0_Write</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">M_CP0_Write</span><span class="p">);</span>
 </code></pre></div>
 <p>会不会更好呢？</p>
-<p>或者形成</p>
+<p>或者写成</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">                        </span><span class="p">(</span><span class="w"> </span><span class="p">((</span><span class="n">E_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">E_A3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">                          </span><span class="p">((</span><span class="n">M_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">M_A3</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w">  </span><span class="p">);</span>
 </code></pre></div>
 <p>会不会还更好呢？</p>
-<p><em>（upd）</em> 上面这个错了（喜提P7第一次课上测试唯一bug），判定地址应该是 <strong>Rd</strong> 而不是 <strong>A3</strong> ！</p>
+<p><em>（upd）</em> 上面这个错了，判定地址应该是 <strong>Rd</strong> 而不是 <strong>A3</strong> ！这也是我P7第一次课上测试的bug，同时也是唯一的bug所在；本来之前写的好好的，考试前一天晚上自作聪明优化性能反而还优化出bug了……</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kt">wire</span><span class="w"> </span><span class="n">Stall_CP0_unready</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D_eret</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">                        </span><span class="p">(</span><span class="w"> </span><span class="p">((</span><span class="n">E_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">E_Rd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w"> </span><span class="o">|</span><span class="w"> </span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">                          </span><span class="p">((</span><span class="n">M_CP0_Write</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">M_Rd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mh">5</span><span class="mi">&#39;d14</span><span class="p">))</span><span class="w">  </span><span class="p">);</span>
@@ -1753,11 +1837,13 @@
 <li>其他方法……</li>
 </ul>
 <p>由于“插入空泡”的方法可能带来宏观PC的问题（本来Stall就会产生空泡，它的解决本来就很烦了，为了避免麻烦，就不要增加空泡的产生来源了），故采用“强制进入”的方式</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// 清空延迟槽?</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">/*  清空延迟槽?  */</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kt">wire</span><span class="w"> </span><span class="n">skip_slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D_eret</span><span class="p">;</span><span class="w"> </span><span class="c1">//哪些指令清空延迟槽?</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_NPC</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">skip_slot</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="n">D_NPC_plus_4</span><span class="w">  </span><span class="o">:</span><span class="w">   </span><span class="n">D_NPC</span><span class="p">;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_F_PC</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">skip_slot</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="n">D_NPC</span><span class="w">         </span><span class="o">:</span><span class="w">   </span><span class="n">F_PC</span><span class="p">;</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">assign</span><span class="w"> </span><span class="n">i_inst_addr</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">Fixed_F_PC</span><span class="p">;</span><span class="w">   </span><span class="c1">//  ~~~~~~&gt; go out of cpu</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_NPC</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">skip_slot</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="n">D_NPC_plus_4</span><span class="w">  </span><span class="o">:</span><span class="w">   </span><span class="n">D_NPC</span><span class="p">;</span><span class="w"> </span><span class="c1">//重设PC入口</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="kt">wire</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">Fixed_F_PC</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">skip_slot</span><span class="p">)</span><span class="w">   </span><span class="o">?</span><span class="w"> </span><span class="n">D_NPC</span><span class="w">         </span><span class="o">:</span><span class="w">   </span><span class="n">F_PC</span><span class="p">;</span><span class="w">  </span><span class="c1">//重设PC出口</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">assign</span><span class="w"> </span><span class="n">i_inst_addr</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">Fixed_F_PC</span><span class="p">;</span><span class="w">   </span><span class="c1">//  ~~~~~~&gt; go out of cpu</span>
 </code></pre></div>
 <p><font color=red>注意：既然清空了延迟槽，就不应该给下一条指令BD标记</font>，所以 <code>eret</code> 指令在D级时 <strong>不应</strong> 为F级的指令标记BD！</p>
 <h3 id="_2">内部异常检测与流水<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -1899,7 +1985,7 @@
 </li>
 <li>
 <p>Req清空流水寄存器时，要让PC置为 <code>32'h0000_4180</code>（而非 <code>32'h0000_3000</code>），防止中断。</p>
-<p>否则：从外面看，暴露出去的宏观PC会产生**突变**（比如，<code>32'h0000_34fc</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_3000</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_4180</code>）</p>
+<p>否则：从外面看，暴露出去的宏观PC会产生 <strong>突变</strong>（比如，<code>32'h0000_34fc</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_3000</code> <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> <code>32'h0000_4180</code>）</p>
 </li>
 </ul>
 <p>D级：</p>
@@ -1941,7 +2027,7 @@
 </code></pre></div>
 <h3 id="cp0_1">协处理器CP0<a class="headerlink" href="#cp0_1" title="Permanent link">&para;</a></h3>
 <p>按照教程的规格设计即可。</p>
-<p><strong>万分小心</strong>，在CP0不断被Verilog的特性被刺。</p>
+<p><strong>万分小心</strong>，在CP0不断被Verilog的特性背刺。</p>
 <p>注意几点：</p>
 <ul>
 <li>
@@ -1954,8 +2040,7 @@
 </li>
 </ul>
 <h3 id="_3">异常处理程序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>略。</p>
-<p>课下测试时，就是简单的取出CP0[12] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 取出CP0[14] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> EPC+4 <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 写回CP0[14] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 跳回</p>
+<p>略（课下测试时，就是简单的取出CP0[12] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 取出CP0[14] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> EPC+4 <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 写回CP0[14] <span class="arithmatex"><span class="MathJax_Preview">\rightarrow</span><script type="math/tex">\rightarrow</script></span> 跳回）</p>
 <h2 id="part-2-b">Part 2. 设计思路B—外部的外设交互<a class="headerlink" href="#part-2-b" title="Permanent link">&para;</a></h2>
 <h3 id="bridge">系统桥Bridge<a class="headerlink" href="#bridge" title="Permanent link">&para;</a></h3>
 <p>据 <em>L15-支持IO（高小鹏）</em>，Bridge应具有的功能有：</p>
@@ -1966,7 +2051,7 @@
 <li>
 <p>地址匹配：根据地址为每个设备产生一个译码信号（hit，即是否命中）</p>
 <blockquote>
-<p><center>地址图</center></p>
+<p>地址图：</p>
 <table>
 <thead>
 <tr>
@@ -1983,7 +2068,7 @@
 </tr>
 <tr>
 <td style="text-align: center;">指令存储器</td>
-<td style="text-align: center;">$ \rm0x0000_3000∼0x0000_6FFF$</td>
+<td style="text-align: center;"><span class="arithmatex"><span class="MathJax_Preview">\rm0x0000\_3000∼0x0000\_6FFF</span><script type="math/tex">\rm0x0000\_3000∼0x0000\_6FFF</script></span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>

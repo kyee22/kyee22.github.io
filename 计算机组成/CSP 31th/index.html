@@ -18,7 +18,7 @@
     
     
       
-        <title>维基百科 - Astro Arren kyee22</title>
+        <title>CSP 31th - Astro Arren kyee22</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#csp-31th" class="md-skip">
           跳转至
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              维基百科
+              CSP 31th
             
           </span>
         </div>
@@ -1075,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/P7-CPU%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" class="md-nav__link">
+      <a href="../P7-CPU%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1095,7 +1095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/P7-Attachment/" class="md-nav__link">
+      <a href="../P7-Attachment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1217,36 +1217,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ipv6-header" class="md-nav__link">
-    IPv6 Header
+  <a href="#t2" class="md-nav__link">
+    T2
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#udp-header" class="md-nav__link">
-    UDP Header
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ipv6-pseudo-header-for-udp" class="md-nav__link">
-    IPv6 pseudo header for UDP
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#icmpv6-packet" class="md-nav__link">
-    ICMPv6 packet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ipv6-pseudo-header-for-icmpv6" class="md-nav__link">
-    IPv6 pseudo header for ICMPv6
+  <a href="#t3" class="md-nav__link">
+    T3
   </a>
   
 </li>
@@ -1270,83 +1249,32 @@
   
 
 
-<h1 id="_1">维基百科<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>考虑到部分同学访问英文维基百科可能有一些困难，把实验中可能会访问的一些页面的部分截图和文本放在这里，以供大家参考。</p>
-<p>这一部分内容的许可证与维基百科一致：Creative Commons Attribution-ShareAlike</p>
-<h2 id="ipv6-header">IPv6 Header<a class="headerlink" href="#ipv6-header" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/IPv6_packet">原网页</a></p>
-<p><img alt="" src="../img/ipv6_header.png" /></p>
-<ul>
-<li>Version (4 bits)</li>
-</ul>
-<p>The constant 6 (bit sequence 0110).</p>
-<ul>
-<li>Traffic Class (6+2 bits)</li>
-</ul>
-<p>The bits of this field hold two values. The six most-significant bits hold the differentiated services field (DS field), which is used to classify packets.[2][3] Currently, all standard DS fields end with a '0' bit. Any DS field that ends with two '1' bits is intended for local or experimental use.[4]
-The remaining two bits are used for Explicit Congestion Notification (ECN);[5] priority values subdivide into ranges: traffic where the source provides congestion control and non-congestion control traffic.</p>
-<ul>
-<li>Flow Label (20 bits)</li>
-</ul>
-<p>A high-entropy identifier of a flow of packets between a source and destination. A flow is a group of packets, e.g., a TCP session or a media stream. The special flow label 0 means the packet does not belong to any flow (using this scheme). An older scheme identifies flow by source address and port, destination address and port, protocol (value of the last Next Header field).[6] It has further been suggested that the flow label be used to help detect spoofed packets.[7]</p>
-<ul>
-<li>Payload Length (16 bits)</li>
-</ul>
-<p>The size of the payload in octets, including any extension headers. The length is set to zero when a Hop-by-Hop extension header carries a Jumbo Payload option.[8]</p>
-<ul>
-<li>Next Header (8 bits)</li>
-</ul>
-<p>Specifies the type of the next header. This field usually specifies the transport layer protocol used by a packet's payload. When extension headers are present in the packet this field indicates which extension header follows. The values are shared with those used for the IPv4 protocol field, as both fields have the same function (see List of IP protocol numbers).</p>
-<ul>
-<li>Hop Limit (8 bits)</li>
-</ul>
-<p>Replaces the time to live field in IPv4. This value is decremented by one at each forwarding node and the packet is discarded if it becomes 0. However, the destination node should process the packet normally even if received with a hop limit of 0.</p>
-<ul>
-<li>Source Address (128 bits)</li>
-</ul>
-<p>The unicast IPv6 address of the sending node.</p>
-<ul>
-<li>Destination Address (128 bits)</li>
-</ul>
-<p>The IPv6 unicast or multicast address of the destination node(s).
-In order to increase performance, and since current link layer technology and transport layer protocols are assumed to provide sufficient error detection,[9] the header has no checksum to protect it.[1]</p>
-<h2 id="udp-header">UDP Header<a class="headerlink" href="#udp-header" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol">原网页</a></p>
-<p><img alt="" src="../img/udp_header.png" /></p>
-<p>A UDP datagram consists of a datagram header and a data section. The UDP datagram header consists of 4 fields, each of which is 2 bytes (16 bits).[1] The data section follows the header and is the payload data carried for the application.</p>
-<p>The use of the checksum and source port fields is optional in IPv4 (pink background in table). In IPv6 only the source port field is optional.</p>
-<ul>
-<li>Source port number</li>
-</ul>
-<p>This field identifies the sender's port, when used, and should be assumed to be the port to reply to if needed. If not used, it should be zero. If the source host is the client, the port number is likely to be an ephemeral port number. If the source host is the server, the port number is likely to be a well-known port number.[4]</p>
-<ul>
-<li>Destination port number</li>
-</ul>
-<p>This field identifies the receiver's port and is required. Similar to source port number, if the client is the destination host then the port number will likely be an ephemeral port number and if the destination host is the server then the port number will likely be a well-known port number.[4]</p>
-<ul>
-<li>Length</li>
-</ul>
-<p>This field specifies the length in bytes of the UDP header and UDP data. The minimum length is 8 bytes, the length of the header. The field size sets a theoretical limit of 65,535 bytes (8-byte header + 65,527 bytes of data) for a UDP datagram. However the actual limit for the data length, which is imposed by the underlying IPv4 protocol, is 65,507 bytes (65,535 bytes − 8-byte UDP header − 20-byte IP header).[5]</p>
-<p>Using IPv6 jumbograms it is possible to have UDP datagrams of size greater than 65,535 bytes.[6] RFC 2675 specifies that the length field is set to zero if the length of the UDP header plus UDP data is greater than 65,535.</p>
-<ul>
-<li>Checksum</li>
-</ul>
-<p>The checksum field may be used for error-checking of the header and data. This field is optional in IPv4, and mandatory in IPv6.[7] The field carries all-zeros if unused.[8]</p>
-<h2 id="ipv6-pseudo-header-for-udp">IPv6 pseudo header for UDP<a class="headerlink" href="#ipv6-pseudo-header-for-udp" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/User_Datagram_Protocol">原网页</a></p>
-<p>When UDP runs over IPv6, the checksum is mandatory. The method used to compute it is changed as documented in RFC 2460:</p>
-<p>Any transport or other upper-layer protocol that includes the addresses from the IP header in its checksum computation must be modified for use over IPv6 to include the 128-bit IPv6 addresses.[7]</p>
-<p>When computing the checksum, again a pseudo header is used that mimics the real IPv6 header:</p>
-<p><img alt="" src="../img/ipv6_pseudo_header_udp.png" /></p>
-<p>The source address is the one in the IPv6 header. The destination address is the final destination; if the IPv6 packet does not contain a Routing header, that will be the destination address in the IPv6 header; otherwise, at the originating node, it will be the address in the last element of the Routing header, and, at the receiving node, it will be the destination address in the IPv6 header. The value of the Next Header field is the protocol value for UDP: 17. The UDP length field is the length of the UDP header and data.</p>
-<h2 id="icmpv6-packet">ICMPv6 packet<a class="headerlink" href="#icmpv6-packet" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol_for_IPv6">原网页</a></p>
-<p><img alt="" src="../img/icmpv6_packet.png" /></p>
-<p>The ICMPv6 message consists of a header and the protocol payload. The header contains only three fields: type (8 bits), code (8 bits), and checksum (16 bits). type specifies the type of the message. Values in the range from 0 to 127 (high-order bit is 0) indicate an error message, while values in the range from 128 to 255 (high-order bit is 1) indicate an information message. The code field value depends on the message type and provides an additional level of message granularity. The checksum field provides a minimal level of integrity verification for the ICMP message.</p>
-<h2 id="ipv6-pseudo-header-for-icmpv6">IPv6 pseudo header for ICMPv6<a class="headerlink" href="#ipv6-pseudo-header-for-icmpv6" title="Permanent link">&para;</a></h2>
-<p><a href="https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol_for_IPv6">原网页</a></p>
-<p><img alt="" src="../img/ipv6_pseudo_header_icmpv6.png" /></p>
-<p>ICMPv6 provides a minimal level of message integrity verification by the inclusion of a 16-bit checksum in its header. The checksum is calculated starting with a pseudo-header of IPv6 header fields according to the IPv6 standard,[3] which consists of the source and destination addresses, the packet length and the next header field, the latter of which is set to the value 58. Following this pseudo header, the checksum is continued with the ICMPv6 message. The checksum computation is performed according to Internet protocol standards using 16-bit ones' complement summation, followed by a final ones' complement of the checksum itself and inserting it into the checksum field.[4] Note that this differs from the way it is calculated for IPv4 in ICMP, but is similar to the calculation done in TCP.</p>
+<h1 id="csp-31th">CSP 31th<a class="headerlink" href="#csp-31th" title="Permanent link">&para;</a></h1>
+<h2 id="t2">T2<a class="headerlink" href="#t2" title="Permanent link">&para;</a></h2>
+<p>对于平面直角坐标系上的坐标 <span class="arithmatex"><span class="MathJax_Preview">(x,y)</span><script type="math/tex">(x,y)</script></span>，小 P 定义了如下两种操作：</p>
+<ol>
+<li>拉伸 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 倍：横坐标 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 变为 <span class="arithmatex"><span class="MathJax_Preview">kx</span><script type="math/tex">kx</script></span>，纵坐标 <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 变为 <span class="arithmatex"><span class="MathJax_Preview">ky</span><script type="math/tex">ky</script></span>；</li>
+<li>旋转 <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span>：将坐标 <span class="arithmatex"><span class="MathJax_Preview">(x,y)</span><script type="math/tex">(x,y)</script></span> 绕坐标原点 <span class="arithmatex"><span class="MathJax_Preview">(0,0)</span><script type="math/tex">(0,0)</script></span> **逆时针**旋转 <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 弧度（<span class="arithmatex"><span class="MathJax_Preview">0\leq\theta\leq 2\pi</span><script type="math/tex">0\leq\theta\leq 2\pi</script></span>）。易知旋转后的横坐标为 <span class="arithmatex"><span class="MathJax_Preview">x\cos\theta-y\sin\theta</span><script type="math/tex">x\cos\theta-y\sin\theta</script></span>，纵坐标为 <span class="arithmatex"><span class="MathJax_Preview">x\sin\theta+y\cos\theta</span><script type="math/tex">x\sin\theta+y\cos\theta</script></span>。</li>
+</ol>
+<p>用矩阵变换来描述，则可以将操作1描述为：
+$$
+\begin{pmatrix}x &amp;y\end{pmatrix}:=\begin{pmatrix}x &amp;y\end{pmatrix}\begin{pmatrix}k &amp;0\0&amp;k\end{pmatrix}
+$$
+将操作2描述为：
+$$
+\begin{pmatrix}x &amp;y\end{pmatrix}:=\begin{pmatrix}x &amp;y\end{pmatrix}\begin{pmatrix}\cos\theta &amp;\sin\theta\-\sin\theta&amp;\cos\theta\end{pmatrix}
+$$
+记 <span class="arithmatex"><span class="MathJax_Preview">A=\begin{pmatrix}x &amp;y\end{pmatrix}</span><script type="math/tex">A=\begin{pmatrix}x &y\end{pmatrix}</script></span>，<span class="arithmatex"><span class="MathJax_Preview">S=\begin{pmatrix}k &amp;0\\0&amp;k\end{pmatrix}或\begin{pmatrix}\cos\theta &amp;\sin\theta\\-\sin\theta&amp;\cos\theta\end{pmatrix}</span><script type="math/tex">S=\begin{pmatrix}k &0\\0&k\end{pmatrix}或\begin{pmatrix}\cos\theta &\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}</script></span>。则 <span class="arithmatex"><span class="MathJax_Preview">A_{j}=A_{i}S_{ij}</span><script type="math/tex">A_{j}=A_{i}S_{ij}</script></span>，其中<span class="arithmatex"><span class="MathJax_Preview">\displaystyle S_{ij}=\prod_{k=i}^{j}{S_k}</span><script type="math/tex">\displaystyle S_{ij}=\prod_{k=i}^{j}{S_k}</script></span>。</p>
+<p>若直接用二维数组 <code>S[][]</code> 来记录 <span class="arithmatex"><span class="MathJax_Preview">S_{ij}</span><script type="math/tex">S_{ij}</script></span> 则空间显然不够，因此考虑 <span class="arithmatex"><span class="MathJax_Preview">\displaystyle T_{i}=\prod_{k=1}^{i}{S_k}</span><script type="math/tex">\displaystyle T_{i}=\prod_{k=1}^{i}{S_k}</script></span>，<span class="arithmatex"><span class="MathJax_Preview">S_{ij}=(T_{i-1})^{-1}T_j</span><script type="math/tex">S_{ij}=(T_{i-1})^{-1}T_j</script></span>，这样只需用一维数组 <code>T[]</code> 来记录 <span class="arithmatex"><span class="MathJax_Preview">T_i</span><script type="math/tex">T_i</script></span>。</p>
+<h2 id="t3">T3<a class="headerlink" href="#t3" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+f(x)=e^x
+</div>
+<script type="math/tex; mode=display">
+f(x)=e^x
+</script>
+</div>
 
 
   
